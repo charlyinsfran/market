@@ -21,14 +21,14 @@
                 <div class="panel panel-body">
                 <p><img src="imagenes/devops_logo.jpg" height="230" width="300" style="text-align: center;"></p>
 
-                <form id=""frm_login>
+                <form id="frm_login">
 
-                <label for="">Usuario</label>
+                <label>Usuario</label>
                 <input type="text" class="form-control input-sm" name="usuario" id="usuario">
-                <label for="">Password</label>
+                <label>Password</label>
                 <input type="password" class="form-control input-sm" name="password" id="password">
                 <p></p>
-                <span class="btn btn-primary btn-sm"> Acceder</span>
+                <span class="btn btn-primary btn-sm" id="entrarSistema"> Acceder</span>
                 <a href="registro.php" class="btn btn-danger btn-sm">Registro</a>
 
 
@@ -48,3 +48,19 @@
     
 </body>
 </html>
+
+
+<script>
+    $('#entrarSistema').click(function(){
+
+datos=$('#').serialize();
+$.ajax({
+    type:"POST",
+    data:datos,
+    url:"../procesos/",
+    success:function(r){
+
+    }
+});
+});
+</script>
