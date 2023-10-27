@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="imagenes/login_icono.png">
     <link rel="stylesheet" type="text/css" href="librerias/bootstrap/css/bootstrap.css">
     <script src="librerias/jquery-3.2.1.min.js"></script>
+    <script src="js/funciones.js"></script>
     <title>LOGIN</title>
 </head>
 <body>
@@ -52,13 +53,28 @@
 
 <script>
     $('#entrarSistema').click(function(){
+        vacios = validarFormVacio('frm_login');
 
-datos=$('#').serialize();
+        if(vacios>0){
+        alert("Debes llenar todos los campos");
+        return false;
+            }
+
+
+
+
+datos=$('#frm_login').serialize();
 $.ajax({
     type:"POST",
     data:datos,
-    url:"../procesos/",
+    url:"procesos/reglogin/login.php",
     success:function(r){
+
+        if(r==1){
+            window.location = "vistas/inicio.php";
+        }else{
+            alert("datos incorrectos");
+        }
 
     }
 });
