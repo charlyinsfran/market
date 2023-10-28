@@ -72,6 +72,7 @@ $.ajax({
 
         if(r==1){
             window.location = "vistas/inicio.php";
+            $('#frm_login')[0].reset();
         }else{
             alert("datos incorrectos");
         }
