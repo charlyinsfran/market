@@ -85,7 +85,7 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Actualiza Ciudades</h4>
+                        <h4 class="modal-title" id="myModalLabel">Actualiza Categorias</h4>
                     </div>
                     <div class="modal-body">
                         <form id="frm_CategoriasUpdates">
@@ -157,6 +157,8 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
             $('#categoriaupdate').val(descripcion);
 
         }
+
+
         
     </script>
 
@@ -189,6 +191,31 @@ $('#btnActualizaCategoria').click(function() {
 
 });
 </SCript>
+
+
+<script>
+     function eliminaCategoria(idcategoria){
+			alertify.confirm('¿Desea eliminar?', function(){ 
+				$.ajax({
+					type:"POST",
+					data:"idcategoria=" + idcategoria,
+					url:"../procesos/categorias/eliminarcategorias.php",
+					success:function(r){
+						if(r==1){
+                            $('#tablaCategoriaLoad').load("categorias/table_categorias.php");   
+							alertify.success("Eliminado con exito!!");
+						}else{
+							alertify.error("No se pudo eliminar");
+						}
+					}
+				});
+			}, function(){ 
+				alertify.error('Cancelo !')
+			});
+
+		}
+
+</script>
 
 
 

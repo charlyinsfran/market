@@ -45,7 +45,7 @@ $result = mysqli_query($conexion, $sql);
             </td>
             <td>
             <span class="btn btn-danger btn-sm">
-                <span class="glyphicon glyphicon-remove"></span>
+                <span class="glyphicon glyphicon-remove" onclick="eliminaCategoria('<?php echo $ver[0] ?>')"></span>
             </span>
 
             </td>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../imagenes/inicio_market.png">
+  
   <title>INICIO</title>
   <?php
 
@@ -47,6 +47,7 @@
                 </span>Productos<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="categorias.php">Categorias</a></li>
+                <li><a href="productos.php">Productos</a></li>
                 <li><a href="proveedores.php">Proveedores</a></li>
                 <li><a href="stock.php">Stock</a></li>
 

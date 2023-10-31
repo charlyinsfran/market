@@ -28,6 +28,14 @@ public function actualizarCategorias($datos){
 }
 
 
+public function eliminaCategoria($idca){
+    $c = new conectar();
+    $conexion=$c->conexion();
+    $sql = "DELETE FROM categorias where id_categoria = '$idca'";
+    return mysqli_query($conexion,$sql);
+}
+
+
 
         
     }
