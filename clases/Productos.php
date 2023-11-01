@@ -45,6 +45,71 @@ class productos{
 
     }
 
+
+    public function actualizarproductos($datos){
+
+        $c = new conectar();
+        $conexion = $c->conexion();
+        $sql = "UPDATE productos SET id_categoria = '$datos[1]',
+                                      nombre = '$datos[2]',
+                                      descripcion = '$datos[3]',
+                                      precio = '$datos[4]',
+                                      iva = '$datos[5]'  where id_producto = '$datos[0]'";
+       return mysqli_query($conexion,$sql);
+
+    }
+
+
+
+    public function eliminaProducto($id){
+        $c = new conectar();
+        $conexion=$c->conexion();
+        $idimagen = self::obtenIdImg($id);
+        $sql = "DELETE FROM productos where id_producto= '$id'";
+        $result =  mysqli_query($conexion,$sql);
+
+        if($result){
+            $ruta = self::obtenRutaImagen($idimagen);
+            $sql = "DELETE FROM imagenes where id_imagen = '$idimagen'";
+            $result =  mysqli_query($conexion,$sql);
+
+            if($result){
+                if(unlink($ruta)){
+                    return 1;
+                }
+            }
+
+
+        }
+    }
+
+/*codigo para obtener datos de imagen */
+
+    public function obtenIdImg($idProducto){
+        $c= new conectar();
+        $conexion=$c->conexion();
+
+        $sql="SELECT id_imagen 
+                from productos 
+                where id_producto='$idProducto'";
+        $result=mysqli_query($conexion,$sql);
+
+        return mysqli_fetch_row($result)[0];
+    }
+
+    public function obtenRutaImagen($idImg){
+        $c= new conectar();
+        $conexion=$c->conexion();
+
+        $sql="SELECT ruta 
+                from imagenes 
+                where id_imagen='$idImg'";
+
+        $result=mysqli_query($conexion,$sql);
+
+        return mysqli_fetch_row($result)[0];
+    }
+
 }
 
 

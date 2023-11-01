@@ -6,10 +6,10 @@ require_once "../../clases/Conexion.php";
 $c = new conectar();
 $conexion = $c->conexion();
 
-$sql = "SELECT p.id_producto,p.nombre,p.descripcion ,c.nombreCategoria,im.ruta,p.cantidad,p.precio,p.iva 
-FROM productos p 
-inner join categorias c on p.id_categoria = c.id_categoria
-inner join imagenes im on im.id_categoria =  p.id_categoria limit 0,10";
+$sql = "SELECT p.id_producto,p.nombre,p.descripcion,c.nombreCategoria,im.ruta,p.cantidad,p.precio,p.iva 
+FROM productos p  
+join categorias c on p.id_categoria = c.id_categoria 
+join imagenes im on im.id_imagen = p.id_imagen";
 
 $result = mysqli_query($conexion, $sql);
 
@@ -73,7 +73,7 @@ while ($ver = mysqli_fetch_row($result)) :
             </td>
             <td>
             <span class="btn btn-danger btn-sm">
-                <span class="glyphicon glyphicon-remove"></span>
+                <span class="glyphicon glyphicon-remove" onclick="eliminaProducto('<?php echo $ver[0] ?>')"></span>
             </span>
 
             </td>

@@ -157,65 +157,61 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
             $('#categoriaupdate').val(descripcion);
 
         }
-
-
-        
     </script>
 
-<SCript>
-    $(document).ready(function() {
+    <SCript>
+        $(document).ready(function() {
 
-$('#btnActualizaCategoria').click(function() {
+            $('#btnActualizaCategoria').click(function() {
 
-    datos = $('#frm_CategoriasUpdates').serialize();
-    $.ajax({
-        type: "POST",
-        data: datos,
-        url: "../procesos/categorias/actualizacategorias.php",
-        success: function(r) {
+                datos = $('#frm_CategoriasUpdates').serialize();
+                $.ajax({
+                    type: "POST",
+                    data: datos,
+                    url: "../procesos/categorias/actualizacategorias.php",
+                    success: function(r) {
 
 
-            if (r == 1) {
-                alertify.success("Registro Actualizado");
-                $('#tablaCategoriaLoad').load("categorias/table_categorias.php");
-              
+                        if (r == 1) {
+                            alertify.success("Registro Actualizado");
+                            $('#tablaCategoriaLoad').load("categorias/table_categorias.php");
 
-            } else {
-                alertify.error("Error al Actualizar");
-            }
+
+                        } else {
+                            alertify.error("Error al Actualizar");
+                        }
+
+                    }
+                });
+            });
+
+
+        });
+    </SCript>
+
+
+    <script>
+        function eliminaCategoria(idcategoria) {
+            alertify.confirm('¿Desea eliminar?', function() {
+                $.ajax({
+                    type: "POST",
+                    data: "idcategoria=" + idcategoria,
+                    url: "../procesos/categorias/eliminarcategorias.php",
+                    success: function(r) {
+                        if (r == 1) {
+                            $('#tablaCategoriaLoad').load("categorias/table_categorias.php");
+                            alertify.success("Eliminado con exito!!");
+                        } else {
+                            alertify.error("No se pudo eliminar");
+                        }
+                    }
+                });
+            }, function() {
+                alertify.error('Cancelo !')
+            });
 
         }
-    });
-});
-
-
-});
-</SCript>
-
-
-<script>
-     function eliminaCategoria(idcategoria){
-			alertify.confirm('¿Desea eliminar?', function(){ 
-				$.ajax({
-					type:"POST",
-					data:"idcategoria=" + idcategoria,
-					url:"../procesos/categorias/eliminarcategorias.php",
-					success:function(r){
-						if(r==1){
-                            $('#tablaCategoriaLoad').load("categorias/table_categorias.php");   
-							alertify.success("Eliminado con exito!!");
-						}else{
-							alertify.error("No se pudo eliminar");
-						}
-					}
-				});
-			}, function(){ 
-				alertify.error('Cancelo !')
-			});
-
-		}
-
-</script>
+    </script>
 
 
 

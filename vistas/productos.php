@@ -15,21 +15,21 @@ if (isset($_SESSION['usuario'])) {
         <script src="../js/funciones.js"></script>
         <link rel="shortcut icon" href="../imagenes/productos.png">
         <title>Productos</title>
-        <?php require_once "menu.php";?>
+        <?php require_once "menu.php"; ?>
         <?php require_once "../clases/Conexion.php";
-              $c = new conectar();
-              $conexion = $c->conexion();
+        $c = new conectar();
+        $conexion = $c->conexion();
 
-              $sql = "Select * from categorias";
-              $sqlupdate = "Select * from categorias";
+        $sql = "Select * from categorias";
+        $sqlupdate = "Select * from categorias";
 
-              $result = mysqli_query($conexion,$sql);
-              $update = mysqli_query($conexion,$sqlupdate);
-
-
+        $result = mysqli_query($conexion, $sql);
+        $update = mysqli_query($conexion, $sqlupdate);
 
 
-?>
+
+
+        ?>
     </head>
 
     <body>
@@ -39,8 +39,7 @@ if (isset($_SESSION['usuario'])) {
                     <br>
                     <br>
 
-                    <span class="btn btn-primary glyphicon glyphicon-plus" style="width: 190px; height: 44px;" 
-                    data-toggle="modal" data-target="#nuevoProducto">Agregar Nuevo</span>
+                    <span class="btn btn-primary glyphicon glyphicon-plus" style="width: 190px; height: 44px;" data-toggle="modal" data-target="#nuevoProducto">Agregar Nuevo</span>
 
                 </div>
             </div>
@@ -75,25 +74,25 @@ if (isset($_SESSION['usuario'])) {
                             <input type="text" class="form-control input-sm" id="detalle" name="detalle">
                             <label>Categoria</label>
                             <select class="form-control input-sm" name="categoria_select" id="categoria_select">
-                                
+
                                 <option value="A">Seleccionar Categoria:</option>
-                                <?php while ($view = mysqli_fetch_row($update)): ?>
-                                    <option value="<?php echo $view[0]?>"><?php echo $view[2];?></option>
-                                    <?php endwhile; ?>
+                                <?php while ($view = mysqli_fetch_row($update)) : ?>
+                                    <option value="<?php echo $view[0] ?>"><?php echo $view[2]; ?></option>
+                                <?php endwhile; ?>
                             </select>
                             <label>Imagen</label>
                             <input type="file" id="imagen" name="imagen">
                             <label>Stock</label>
-                            <input type="text" class="form-control input-sm" id="stock" name="stock" value="0"  disabled>
+                            <input type="text" class="form-control input-sm" id="stock" name="stock" value="0" disabled>
                             <label>Precio</label>
                             <input type="text" class="form-control input-sm" id="precio" name="precio">
                             <label>IVA</label>
-                            <select class="form-control input-sm"name="iva_select" id="iva_select">
+                            <select class="form-control input-sm" name="iva_select" id="iva_select">
                                 <option value="A">Seleccionar IVA:</option>
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>
                             </select>
-                              
+
                         </form>
 
 
@@ -111,7 +110,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- *************************************************************************
 **************************************************************************
 ********************************
-MODAL PARA ACTUALIZAR PRODUCTOS   -->                                  
+MODAL PARA ACTUALIZAR PRODUCTOS   -->
 
         <div class="modal fade" id="actualizaProductos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-sm" role="document">
@@ -121,7 +120,7 @@ MODAL PARA ACTUALIZAR PRODUCTOS   -->
                         <h4 class="modal-title" id="myModalLabel">Actualiza Productos</h4>
                     </div>
                     <div class="modal-body">
-                    <form id="frm_productosupdates" enctype="multipart/form-data">
+                        <form id="frm_productosupdates">
                             <input type="text" hidden="" id="idproducto" name="idproducto">
                             <label>Descripcion</label>
                             <input type="text" class="form-control input-sm" id="descripcionupdate" name="descripcionupdate">
@@ -129,24 +128,24 @@ MODAL PARA ACTUALIZAR PRODUCTOS   -->
                             <input type="text" class="form-control input-sm" id="detalleupdate" name="detalleupdate">
                             <label>Categoria</label>
                             <select class="form-control input-sm" name="categoria_selectupdate" id="categoria_selectupdate">
-                                
+
                                 <option value="A">Seleccionar Categoria:</option>
-                                <?php while ($ver = mysqli_fetch_row($result)): ?>
-                                    <option value="<?php echo $ver[0]?>"><?php echo $ver[2];?></option>
-                                    <?php endwhile; ?>
+                                <?php while ($ver = mysqli_fetch_row($result)) : ?>
+                                    <option value="<?php echo $ver[0] ?>"><?php echo $ver[2]; ?></option>
+                                <?php endwhile; ?>
                             </select>
-                            
+
                             <label>Stock</label>
-                            <input type="text" class="form-control input-sm" id="stockupdate" name="stockupdate" value="0"  disabled>
+                            <input type="text" class="form-control input-sm" id="stockupdate" name="stockupdate" value="0" disabled>
                             <label>Precio</label>
                             <input type="text" class="form-control input-sm" id="precioupdate" name="precioupdate">
                             <label>IVA</label>
-                            <select class="form-control input-sm"name="iva_selectupdate" id="iva_selectupdate">
+                            <select class="form-control input-sm" name="iva_selectupdate" id="iva_selectupdate">
                                 <option value="A">Seleccionar IVA:</option>
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>
                             </select>
-                              
+
                         </form>
 
 
@@ -172,7 +171,7 @@ MODAL PARA ACTUALIZAR PRODUCTOS   -->
         $(document).ready(function() {
             $('#tablaProductosLoad').load("productos/table_productos.php");
             $('#btnAgregaProductos').click(function() {
-            $vacios = validarFormVacio('frm_productos');
+                $vacios = validarFormVacio('frm_productos');
 
 
                 if (vacios > 0) {
@@ -182,39 +181,38 @@ MODAL PARA ACTUALIZAR PRODUCTOS   -->
 
                 var formData = new FormData(document.getElementById("frm_productos"));
 
-				$.ajax({
-					url: "../procesos/productos/insert_file.php",
-					type: "post",
-					dataType: "html",
-					data: formData,
-					cache: false,
-					contentType: false,
-					processData: false,
+                $.ajax({
+                    url: "../procesos/productos/insert_file.php",
+                    type: "post",
+                    dataType: "html",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
 
-					success:function(r){
-					
-							$('#frm_productos')[0].reset();
-							$('#tablaProductosLoad').load("productos/table_productos.php");
-							alertify.success("Agregado con exito");
-						
-					}
-				});
+                    success: function(r) {
 
-                 });
-                
+                        $('#frm_productos')[0].reset();
+                        $('#tablaProductosLoad').load("productos/table_productos.php");
+                        alertify.success("Agregado con exito");
+
+                    }
+                });
+
             });
-        
+
+        });
     </script>
 
 
-<script>
-    function agregadatoproducto(idproducto){
+    <script>
+        function agregadatoproducto(idproducto) {
             $.ajax({
                 type: "POST",
                 data: "idproducto=" + idproducto,
-                url:"../procesos/productos/obtenerdatos.php",
-                success:function(r){
-                    
+                url: "../procesos/productos/obtenerdatos.php",
+                success: function(r) {
+
                     dato = jQuery.parseJSON(r);
 
                     $('#idproducto').val(dato['id_producto']);
@@ -227,10 +225,66 @@ MODAL PARA ACTUALIZAR PRODUCTOS   -->
 
                 }
             });
-    }
+        }
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $('#btnActualizaProductos').click(function() {
+                datos = $('#frm_productosupdates').serialize();
+
+                $.ajax({
+                    type: "POST",
+                    data: datos,
+                    url: "../procesos/productos/actualizarproductos.php",
+                    success: function(r) {
+                        if (r == 1) {
+                            alertify.success("Registro Actualizado");
+                            $('#tablaProductosLoad').load("productos/table_productos.php");
+                            $('#frm_productosupdates')[0].reset();
+
+
+
+                        } else {
+                            alertify.error("Error al Actualizar");
+                        }
+
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+
+<script>
+
+function eliminaProducto(idproducto) {
+            alertify.confirm('¿Desea eliminar?', function() {
+                $.ajax({
+                    type: "POST",
+                    data: "idproducto=" + idproducto,
+                    url: "../procesos/productos/eliminarproducto.php",
+                    success: function(r) {
+                        if (r == 1) {
+                            $('#tablaProductosLoad').load("productos/table_productos.php");
+                            alertify.success("Eliminado con exito!!");
+                        } else {
+                            alertify.error("No se pudo eliminar");
+                        }
+                    }
+                });
+            }, function() {
+                alertify.error('Cancelo !')
+            });
+
+        }
 </script>
 
-    
+
 <?php
 } else {
     header("location:../index.php");
