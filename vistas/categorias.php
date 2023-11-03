@@ -13,6 +13,7 @@ if (isset($_SESSION['usuario'])) {
     <head>
         <meta charset="UTF-8">
         <script src="../js/funciones.js"></script>
+        <link rel="shortcut icon" href="../imagenes/categorizacion.png">
         <title>Categorias</title>
         <?php require_once "menu.php";
         /*date_default_timezone_set('America/Asuncion');

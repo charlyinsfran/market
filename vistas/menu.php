@@ -4,11 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>INICIO</title>
   <?php
 
+
+
   require_once "dependencias.php";
+  require_once "../clases/Conexion.php";
+  $obj = new conectar();
+  $sesion = $_SESSION['usuario'];
 
   ?>
 
@@ -107,7 +112,7 @@
 
           <li class="dropdown">
             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <span class="glyphicon glyphicon-user"></span> <strong style="text-decoration: underline;">Usuario:</strong> <span class="caret"></span></a>
+              <span class="glyphicon glyphicon-user"></span> <strong style="text-decoration: underline;">Usuario:</strong> <?php echo strtoupper($_SESSION['usuario']);?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li> <a style="color: red" href="../procesos/salir.php"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
 
