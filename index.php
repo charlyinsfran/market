@@ -24,13 +24,14 @@
 
                 <form id="frm_login">
 
-                <label>Usuario</label>
+                <label >Usuario</label>
                 <input type="text" class="form-control input-sm" name="usuario" id="usuario">
                 <label>Password</label>
                 <input type="password" class="form-control input-sm" name="password" id="password">
                 <p></p>
-                <span class="btn btn-primary btn-sm" id="entrarSistema"> Acceder</span>
-                <a href="registro.php" class="btn btn-danger btn-sm">Registro</a>
+                
+                <span class="btn btn-primary btn-md" id="entrarSistema" style="text-align: center;"> Acceder</span>
+                <a href="registro.php" class="btn btn-danger btn-md">Registro</a>
 
 
                 </form>
@@ -43,7 +44,10 @@
 
 
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <span class="btn btn-primary btn-sm" id="entrarSistema" style="text-align: center;"> Acceder</span>
+                <a href="registro.php" class="btn btn-danger btn-sm">Registro</a>
+        </div>
     </div>
 </div>
     

@@ -6,6 +6,8 @@
 <link rel="stylesheet" type="text/css" href="../librerias/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../librerias/select2/css/select2.css">
 <link rel="stylesheet" type="text/css" href="../css/estilos_menu.css">
+<link rel="stylesheet" type="text/css" href="../css/styles_inicio.css">
+
 
 
 <script src="../librerias/jquery-3.2.1.min.js"></script>

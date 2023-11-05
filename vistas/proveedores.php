@@ -40,8 +40,7 @@ if (isset($_SESSION['usuario'])) {
                     <br>
                     <br>
 
-                    <span class="btn btn-primary glyphicon glyphicon-plus" style="width: 190px; height: 44px;" 
-                    data-toggle="modal" data-target="#nuevoproveedor"> Nuevo</span>
+                    <span class="btn btn-primary glyphicon glyphicon-plus" style="width: 190px; height: 44px;" data-toggle="modal" data-target="#nuevoproveedor"> Nuevo</span>
 
                 </div>
             </div>
@@ -123,7 +122,7 @@ if (isset($_SESSION['usuario'])) {
 
 
                         <form id="frm_proveedoresupdate">
-                            	<input type="text" id="idproveedor" name="idproveedor" hidden="">
+                            <input type="text" id="idproveedor" name="idproveedor" hidden="">
                             <label>Razon Social</label>
                             <input type="text" class="form-control input-sm" id="razon_socialupdate" name="razon_socialupdate" onkeyup="mayus(this);">
 
@@ -136,10 +135,10 @@ if (isset($_SESSION['usuario'])) {
                             <select name="ciudadupdate" id="ciudadupdate" class="form-control input-sm" style="width: 190px;">
                                 <option value="A">Seleccionar ciudad:</option>
                                 <?php
-                                 $sqle = "SELECT c.idciudad,c.detalle,d.descripcion from ciudad c join departamentos d on c.id_departamento = d.iddepartamentos";
-                                 $resulta = mysqli_query($conexion, $sqle);
-                         
-                                
+                                $sqle = "SELECT c.idciudad,c.detalle,d.descripcion from ciudad c join departamentos d on c.id_departamento = d.iddepartamentos";
+                                $resulta = mysqli_query($conexion, $sqle);
+
+
                                 while ($view = mysqli_fetch_row($resulta)) : ?>
                                     <option value="<?php echo $view[0] ?>"><?php echo $view[1] . ' - ' . $view[2]; ?></option>
                                 <?php endwhile; ?>
@@ -168,7 +167,7 @@ if (isset($_SESSION['usuario'])) {
     </body>
 
     </html>
-<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
             $('#tablaProveedoresLoad').load("proveedores/tablaproveedores.php");
             $('#btnNuevoProveedor').click(function() {
@@ -202,11 +201,10 @@ if (isset($_SESSION['usuario'])) {
                 });
             });
         });
+    </script>
 
-</script>
-
-<script>
-    function agregadatoproveedor(idproveedor) {
+    <script>
+        function agregadatoproveedor(idproveedor) {
             $.ajax({
                 type: "POST",
                 data: "idproveedor=" + idproveedor,
@@ -226,39 +224,39 @@ if (isset($_SESSION['usuario'])) {
                 }
             });
         }
-</script>
+    </script>
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
-$('#btnActualizaProveedor').click(function() {
-    datos = $('#frm_proveedoresupdate').serialize();
+            $('#btnActualizaProveedor').click(function() {
+                datos = $('#frm_proveedoresupdate').serialize();
 
-    $.ajax({
-        type: "POST",
-        data: datos,
-        url: "../procesos/proveedores/update_proveedor.php",
-        success: function(r) {
-
-            
-            if (r == 1) {
-                alertify.success("Registro Actualizado");
-                $('#tablaProveedoresLoad').load("proveedores/tablaproveedores.php");
-                $('#frm_proveedoresupdate')[0].reset();
+                $.ajax({
+                    type: "POST",
+                    data: datos,
+                    url: "../procesos/proveedores/update_proveedor.php",
+                    success: function(r) {
 
 
+                        if (r == 1) {
+                            alertify.success("Registro Actualizado");
+                            $('#tablaProveedoresLoad').load("proveedores/tablaproveedores.php");
+                            $('#frm_proveedoresupdate')[0].reset();
 
-            } else {
-                alertify.error("Error al Actualizar");
-            }
 
-        }
-    });
 
-});
+                        } else {
+                            alertify.error("Error al Actualizar");
+                        }
 
-});
-</script>
+                    }
+                });
+
+            });
+
+        });
+    </script>
 
     <script>
         function mayus(e) {
@@ -276,6 +274,30 @@ $('#btnActualizaProveedor').click(function() {
 
         });
     </script>
+
+<script>
+
+function eliminaProveedor(idproveedor) {
+            alertify.confirm('¿Desea eliminar?', function() {
+                $.ajax({
+                    type: "POST",
+                    data: "idproveedor=" + idproveedor,
+                    url: "../procesos/proveedores/eliminar_proveedor.php",
+                    success: function(r) {
+                        if (r == 1) {
+                            $('#tablaProveedoresLoad').load("proveedores/tablaproveedores.php");
+                            alertify.success("Eliminado con exito!!");
+                        } else {
+                            alertify.error("No se pudo eliminar");
+                        }
+                    }
+                });
+            }, function() {
+                alertify.error('Accion anulada')
+            });
+
+        }
+</script>
 
 <?php
 } else {

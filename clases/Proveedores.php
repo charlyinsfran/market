@@ -52,6 +52,16 @@ public function new_proveedor($datos){
     }
 
 
+    public function eliminaProveedor($id){
+        $c = new conectar();
+        $conexion=$c->conexion();
+        $sql = "DELETE FROM proveedores where idproveedores = '$id'";
+        return mysqli_query($conexion,$sql);
+
+        
+    }
+
+
 
 
 }

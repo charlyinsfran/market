@@ -13,8 +13,9 @@ $result = mysqli_query($conexion, $sql);
 
 ?>
 
-<label style="text-align: center;">Productos</label>
+<label style="text-align: center;">PRODUCTOS SIN STOCK</label>
 <p></p>
+<P></P>
 
 <table class="table table-hover table-condensed table-bordered">
 
@@ -36,8 +37,9 @@ while ($ver = mysqli_fetch_row($result)) :
     $numero = $ver[3];
     
 ?>
-
+    
     <tr style="font-size: 13;">
+   
             <td><?php echo utf8_encode($ver[0]); ?> </td>
             <td><?php echo utf8_encode($ver[1]); ?></td>
             <td><?php echo utf8_encode($ver[2]); ?></td>
