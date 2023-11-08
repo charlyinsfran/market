@@ -22,7 +22,7 @@
                 <div class="panel panel-body">
                 <p><img src="imagenes/devops_logo.jpg" height="230" width="300" style="text-align: center;"></p>
 
-                <form id="frm_login">
+                <form id="frm_login" action="procesos/reglogin/login.php" method="post">
 
                 <label >Usuario</label>
                 <input type="text" class="form-control input-sm" name="usuario" id="usuario">
@@ -44,10 +44,7 @@
 
 
         </div>
-        <div class="col-sm-4">
-            <span class="btn btn-primary btn-sm" id="entrarSistema" style="text-align: center;"> Acceder</span>
-                <a href="registro.php" class="btn btn-danger btn-sm">Registro</a>
-        </div>
+        
     </div>
 </div>
     
@@ -56,6 +53,16 @@
 
 
 <script>
+    $(document).ready(function() {
+        $('#usuario').focus(); });
+    
+    
+</script>
+
+<script>
+
+
+
     $('#entrarSistema').click(function(){
         vacios = validarFormVacio('frm_login');
 

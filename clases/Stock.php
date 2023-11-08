@@ -21,10 +21,6 @@ public function actualizarstock($datos){
 
     $c = new conectar();
     $conexion = $c->conexion();
-    
-    $sql = "UPDATE productos SET cantidad = '$datos[1]'  where id_producto = '$datos[0]'";
-   $result = mysqli_query($conexion,$sql);
-
    
 
     $query = "INSERT INTO stock(id_producto,id_usuario,cantidad,fechaCaptura) values('$datos[0]','$datos[2]','$datos[1]','$datos[3]')"; 

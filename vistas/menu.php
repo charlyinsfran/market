@@ -65,22 +65,11 @@
 
             <li><a href=""><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a>
             </li>
-
-
-
-            <li class="dropdown">
-
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-list-alt"></span> Clientes <span class="caret"></span></a>
-
-              <ul class="dropdown-menu">
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-              </ul>
+            <li><a href="clientes.php"><span class="glyphicon glyphicon-list-alt  "></span> Clientes</a>
             </li>
 
+
+            
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -91,7 +80,7 @@
 
                 <li>
                   <a href="">Ventas</a>
-                  <a href="">Compras</a>
+                  <a href="compras.php">Compras</a>
                 </li>
 
             </li>

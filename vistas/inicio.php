@@ -23,6 +23,9 @@ if(isset($_SESSION['usuario'])){
     $clientes = "SELECT count(idclientes) from clientes";
     $ret_clientes= mysqli_query($conexion,$clientes);
 
+    $compras = "SELECT COUNT(idcompras) from compras;";
+    $ret_compras= mysqli_query($conexion,$compras);
+
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +84,17 @@ if(isset($_SESSION['usuario'])){
         <div class="circle-tile-content purple">
           <div class="circle-tile-description text-faded"> Clientes </div>
           <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_clientes)) : echo $ver[0];  endwhile; ?></div>
+          <a class="circle-tile-footer" href="clientes.php">Ver<i class=""></i></a>
+        </div>
+      </div>
+    </div> 
+
+    <div class="col-lg-3 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading green"><i class="glyphicon glyphicon-stats gi-1"></i></div></a>
+        <div class="circle-tile-content green">
+          <div class="circle-tile-description text-faded"> Compras de Productos </div>
+          <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_compras)) : echo $ver[0];  endwhile; ?></div>
           <a class="circle-tile-footer" href="clientes.php">Ver<i class=""></i></a>
         </div>
       </div>

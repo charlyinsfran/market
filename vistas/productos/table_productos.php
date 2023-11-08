@@ -15,11 +15,11 @@ $result = mysqli_query($conexion, $sql);
 
 ?>
 
-<label style="text-align: center;">Productos</label>
+<label style="font-size: 2em; text-align:center">Productos</label>
 <p></p>
 
-<table class="table table-hover table-condensed table-bordered">
-
+<table class="table table-hover table-condensed table-bordered" id="tabladinamica" style="text-align: center;">
+    <thead>
     <tr style="font-weight: bold; background-color: #f1f8f9; text-align: center;">
         <td>Codigo</td>
         <td>Descripcion</td>
@@ -33,6 +33,9 @@ $result = mysqli_query($conexion, $sql);
         <td>Editar</td>
         <td>Borrar</td>
     </tr>
+    </thead>
+    <tbody>
+    
     <?php
 
 
@@ -54,7 +57,7 @@ while ($ver = mysqli_fetch_row($result)) :
         
         </td>
             <td><?php echo utf8_encode($ver[5]); ?></td>
-            <td>Gs. <?php echo utf8_encode($ver[6]); ?></td>
+            <td>Gs. <?php echo number_format($ver[6], 0, ",", ".");?></td>
             <td> <?php echo utf8_encode($ver[7]); ?>%</td>
             <?php $precio = $ver[6]; 
                     $iva = ($precio*$ver[7])/100;
@@ -62,7 +65,7 @@ while ($ver = mysqli_fetch_row($result)) :
                 
                 
                 ?>
-            <td>Gs. <?php echo $preciofinal; ?></td>
+            <td>Gs. <?php echo number_format($preciofinal, 0, ",", "."); ?></td>
 
             <td>
                 <span class="btn btn-warning btn-sm">
@@ -79,4 +82,32 @@ while ($ver = mysqli_fetch_row($result)) :
             </td>
         </tr>
         <?php endwhile; ?>
+        </tbody>
 </table>  
+<!-- number_format($imp_subtotal, 0, ",", "."); -->
+<script type="text/javascript">
+    $(document).ready(function(){
+   $('#tabladinamica').DataTable({
+       "language": {
+        "decimal": ",",
+        "thousands": ".",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoPostFix": "",
+        "search": "Buscar:",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "loadingRecords": "Cargando...",
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    }
+            
+        });
+
+
+    });
+</script>

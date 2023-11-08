@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="../librerias/select2/css/select2.css">
 <link rel="stylesheet" type="text/css" href="../css/estilos_menu.css">
 <link rel="stylesheet" type="text/css" href="../css/styles_inicio.css">
+<link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.css">
+<link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.min.css">
 
 
 
@@ -15,3 +17,5 @@
 <script src="../librerias/bootstrap/js/bootstrap.js"></script>
 <script src="../librerias/select2/js/select2.js"></script>
 <script src="../js/funciones.js"></script>
+<script src="../librerias/DataTables/js/jquery.dataTables.js"></script>
+<script src="../librerias/DataTables/js/dataTables.bootstrap.js"></script>

@@ -66,6 +66,7 @@ if(isset($_SESSION['usuario'])){
 
                         <form id="frm_stock">
                            	<input type="text" id="idproducto" name="idproducto" hidden>
+                            <input type="text" id="cantidad" name="cantidad" hidden>
                             <label>Producto</label>
                             <select class="form-control input-sm" name="producto" id="producto" disabled>
                                 <option value="A">Seleccione Producto:</option>
@@ -75,7 +76,7 @@ if(isset($_SESSION['usuario'])){
                             </select>
                             <label>Stock Nuevo</label>
                             <input type="text" class="form-control input-sm" id="stocknuevo" name="stocknuevo" 
-                            minlength="1" maxlength="4" required =""  pattern="[0-9]+" placeholder="Ingrese solo numeros hasta 4 digitos. Ej: 1 - 9999">
+                            minlength="1" maxlength="4" required =""  placeholder="Ingrese solo numeros hasta 4 digitos. Ej: 1 - 9999">
                         
                         </form>
 
@@ -112,6 +113,7 @@ if(isset($_SESSION['usuario'])){
 
                     $('#idproducto').val(dato['id_producto']);
                     $('#producto').val(dato['id_producto']);
+                    $('#cantidad').val(dato['cantidad']);
                     
 
                 }
@@ -141,6 +143,7 @@ if(isset($_SESSION['usuario'])){
                     data: datos,
                     url: "../procesos/productos/actualizarstock.php",
                     success: function(r) {
+                        //console.log(r);
 
                         if (r == 1) {
                             alertify.success("Registro Añadido");

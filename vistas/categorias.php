@@ -14,6 +14,13 @@ if (isset($_SESSION['usuario'])) {
         <meta charset="UTF-8">
         <script src="../js/funciones.js"></script>
         <link rel="shortcut icon" href="../imagenes/categorizacion.png">
+        <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.min.css">
+
+        <script src="../librerias/DataTables/js/jquery.dataTables.js"></script>
+        <script src="../librerias/DataTables/js/dataTables.bootstrap.js"></script>
+        
         <title>Categorias</title>
         <?php require_once "menu.php";
         /*date_default_timezone_set('America/Asuncion');
@@ -31,7 +38,9 @@ if (isset($_SESSION['usuario'])) {
                     <br>
                     <br>
 
-                    <span class="btn btn-primary glyphicon glyphicon-plus" style="width: 190px; height: 44px;" data-toggle="modal" data-target="#nuevaCategoria">Agregar Nuevo</span>
+                    <span class="btn btn-primary glyphicon" 
+                    style="width: 190px; height: 44px; font-family:SANS-SERIF; font-size: 130%;" 
+                    data-toggle="modal" data-target="#nuevaCategoria">Agregar Nuevo</span>
 
                 </div>
             </div>
@@ -91,7 +100,7 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                     <div class="modal-body">
                         <form id="frm_CategoriasUpdates">
                             <input type="text" hidden="" id="idcategoriaold" name="idcategoriaold">
-                            <label>Ciudad</label>
+                            <label>Descripcion</label>
                             <input type="text" id="categoriaupdate" name="categoriaupdate" class="form-control input-sm">
                             <p></p>
                         </form>
@@ -112,7 +121,10 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 
     </html>
 
-
+    <script>
+        $('#nuevaCategoria').on('shown.bs.modal', function () { $('#categoria').focus();}) 
+        $('#actualizaCategorias').on('shown.bs.modal', function () { $('#categoriaupdate').focus();}) 
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -139,6 +151,7 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
                             alertify.success("Registro Añadido");
                             $('#tablaCategoriaLoad').load("categorias/table_categorias.php");
                             $('#frm_categorias')[0].reset();
+                            DataTable.reload();
 
                         } else {
                             alertify.error("Error al agregar o Dato Duplicado");
@@ -162,7 +175,7 @@ MODAL PARA ACTUALIZAR CATEGORIAS                                     -->
 
     <SCript>
         $(document).ready(function() {
-
+          
             $('#btnActualizaCategoria').click(function() {
 
                 datos = $('#frm_CategoriasUpdates').serialize();

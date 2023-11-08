@@ -14,6 +14,11 @@ if (isset($_SESSION['usuario'])) {
         <meta charset="UTF-8">
         <script src="../js/funciones.js"></script>
         <link rel="shortcut icon" href="../imagenes/productos.png">
+        <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.min.css">
+
+        <script src="../librerias/DataTables/js/jquery.dataTables.js"></script>
+        <script src="../librerias/DataTables/js/dataTables.bootstrap.js"></script>
         <title>Productos</title>
         <?php require_once "menu.php"; ?>
         <?php require_once "../clases/Conexion.php";
@@ -39,7 +44,7 @@ if (isset($_SESSION['usuario'])) {
                     <br>
                     <br>
 
-                    <span class="btn btn-primary glyphicon glyphicon-plus" style="width: 190px; height: 44px;" data-toggle="modal" data-target="#nuevoProducto">Agregar Nuevo</span>
+                    <span class="btn btn-primary glyphicon" style="width: 190px; height: 44px; font-family:SANS-SERIF; font-size: 130%;" data-toggle="modal" data-target="#nuevoProducto">Agregar Nuevo</span>
 
                 </div>
             </div>
