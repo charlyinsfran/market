@@ -7,7 +7,7 @@ $c = new conectar();
 $conexion = $c->conexion();
 
 $sql = "SELECT id_producto,nombre,cantidad,precio,iva
-FROM productos where cantidad <= 1000 ORDER BY cantidad asc";
+FROM productos where cantidad <= 1 ORDER BY cantidad asc";
 
 $result = mysqli_query($conexion, $sql);
 

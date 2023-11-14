@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="imagenes/login_icono.png">
     <link rel="stylesheet" type="text/css" href="librerias/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/themes/default.css">
+
     <script src="librerias/jquery-3.2.1.min.js"></script>
     <script src="js/funciones.js"></script>
+    <script src="librerias/alertifyjs/alertify.js"></script>
     <title>LOGIN</title>
 </head>
 <body>
@@ -23,16 +27,17 @@
                 <p><img src="imagenes/devops_logo.jpg" height="230" width="300" style="text-align: center;"></p>
 
                 <form id="frm_login" action="procesos/reglogin/login.php" method="post">
-
-                <label >Usuario</label>
-                <input type="text" class="form-control input-sm" name="usuario" id="usuario">
+                <div class="col-sm-12">
+                <label style="font-size: 1em;">Usuario</label>
+                <input type="text" class="form-control input-sm" name="usuario" id="usuario" style="font-size: 1em;">
                 <label>Password</label>
-                <input type="password" class="form-control input-sm" name="password" id="password">
+                <input type="password" class="form-control input-sm" name="password" id="password" style="font-size: 1em;">
                 <p></p>
+                </div>
+                <div class="col-sm-5">
+                <span class="btn btn-primary btn-md" id="entrarSistema" style="text-align: center; font-size: 1em;"> Acceder</span>
                 
-                <span class="btn btn-primary btn-md" id="entrarSistema" style="text-align: center;"> Acceder</span>
-                <a href="registro.php" class="btn btn-danger btn-md">Registro</a>
-
+                </div>
 
                 </form>
 
@@ -67,7 +72,7 @@
         vacios = validarFormVacio('frm_login');
 
         if(vacios>0){
-        alert("Debes llenar todos los campos");
+        alertify.alert("Debes llenar todos los campos");
         return false;
             }
 
@@ -85,7 +90,7 @@ $.ajax({
             window.location = "vistas/inicio.php";
             $('#frm_login')[0].reset();
         }else{
-            alert("datos incorrectos");
+            alertify.error("Datos Incorrectos");
         }
 
     }

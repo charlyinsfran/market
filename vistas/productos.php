@@ -16,6 +16,8 @@ if (isset($_SESSION['usuario'])) {
         <link rel="shortcut icon" href="../imagenes/productos.png">
         <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.css">
         <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../librerias/datatables/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="../librerias/DataTables/css/buttons.dataTables.min.css">
 
         <script src="../librerias/DataTables/js/jquery.dataTables.js"></script>
         <script src="../librerias/DataTables/js/dataTables.bootstrap.js"></script>

@@ -7,6 +7,7 @@ if(isset($_SESSION['usuario'])){
     require_once "../clases/Conexion.php";
     $c = new conectar();
     $conexion = $c->conexion();
+    $sesiontipo = $_SESSION['tipousuario'];
 //query para mostrar la cantidad de productos del sistema
     $sql = "SELECT count(id_producto) from productos";
     $result = mysqli_query($conexion, $sql);
@@ -95,7 +96,7 @@ if(isset($_SESSION['usuario'])){
         <div class="circle-tile-content green">
           <div class="circle-tile-description text-faded"> Compras de Productos </div>
           <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_compras)) : echo $ver[0];  endwhile; ?></div>
-          <a class="circle-tile-footer" href="clientes.php">Ver<i class=""></i></a>
+          <a class="circle-tile-footer" href="view_compras.php">Ver<i class=""></i></a>
         </div>
       </div>
     </div> 
@@ -107,7 +108,7 @@ if(isset($_SESSION['usuario'])){
   
 </div>
 </div>
-    
+   
 </body>
 </html>
 

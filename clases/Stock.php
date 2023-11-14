@@ -23,7 +23,8 @@ public function actualizarstock($datos){
     $conexion = $c->conexion();
    
 
-    $query = "INSERT INTO stock(id_producto,id_usuario,cantidad,fechaCaptura) values('$datos[0]','$datos[2]','$datos[1]','$datos[3]')"; 
+    $query = "INSERT INTO stock(id_producto,id_usuario,cantidad,fechaCaptura)
+     values('$datos[0]','$datos[2]','$datos[1]','$datos[3]')"; 
     $cast =  mysqli_query($conexion,$query);
 
     return 1;

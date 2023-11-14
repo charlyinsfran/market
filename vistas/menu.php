@@ -14,6 +14,7 @@
   require_once "../clases/Conexion.php";
   $obj = new conectar();
   $sesion = $_SESSION['usuario'];
+  $tipo = $_SESSION['tipousuario'];
 
   ?>
 
@@ -41,7 +42,7 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home" data-toggle="modal" data-target="#presentacion"></span>Inicio</a></li>
+            <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home" data-toggle="modal" data-target="#presentacion"></span> Inicio</a></li>
 
 
             </li>
@@ -49,7 +50,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="glyphicon glyphicon-qrcode">
                   <p></p>
-                </span>Productos<span class="caret"></span></a>
+                </span> Productos<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="categorias.php">Categorias</a></li>
                 <li><a href="productos.php">Productos</a></li>
@@ -62,9 +63,10 @@
 
 
 
-
-            <li><a href=""><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a>
+          <?php if($tipo == "admin"){?>
+            <li><a href="usuarios.php"><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a>
             </li>
+            <?php }?>
             <li><a href="clientes.php"><span class="glyphicon glyphicon-list-alt  "></span> Clientes</a>
             </li>
 

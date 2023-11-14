@@ -88,6 +88,26 @@ while ($ver = mysqli_fetch_row($result)) :
 <script type="text/javascript">
     $(document).ready(function(){
    $('#tabladinamica').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+            {
+                extend:    'copyHtml5',
+                className: 'btn btn-success',
+                titleAttr: 'Copiar'
+            },
+            {
+                extend:    'excelHtml5',
+                titleAttr: 'Excel'
+            },
+            {
+                extend:    'csvHtml5',
+                titleAttr: 'CSV'
+            },
+            {
+                extend:    'pdfHtml5',
+                titleAttr: 'PDF'
+            }
+        ],
        "language": {
         "decimal": ",",
         "thousands": ".",

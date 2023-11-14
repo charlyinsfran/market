@@ -16,9 +16,12 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <div class="panel panel-success">
+            <br>
+                <div class="panel panel-success">   
+                    
                     <div class="panel panel-heading"style="text-align: center;">CREAR USUARIO NUEVO</div>
                     <div class="panel panel-body">
+
                         <form id="frm_registrousuarios">    
                     
                         <label>Nombre</label>
@@ -34,7 +37,7 @@
                         <label>Usuario</label>
                         <input type="text" class="form-control input-sm" name="usuario" id="usuario">
                         <label>Password</label>
-                        <input type="text" class="form-control input-sm" name="pass" id="pass">
+                        <input type="password" class="form-control input-sm" name="pass" id="pass">
                         <p></p>
                         <span class="btn btn-info" id="registro"><strong>Guardar</strong></span>
                         <a class="btn btn-warning" href="index.php">Cancelar</a>
