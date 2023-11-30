@@ -53,7 +53,7 @@ while ($ver = mysqli_fetch_row($result)) :
             $imagenruta = $imagen[1]."/".$imagen[2]."/".$imagen[3];
             ?>
 
-             <img width="100" height="100" src="<?php echo $imagenruta?>">
+             <img width="30" height="30" src="<?php echo $imagenruta?>">
         
         </td>
             <td><?php echo utf8_encode($ver[5]); ?></td>

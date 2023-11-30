@@ -21,11 +21,11 @@
 
 </head>
 
-<body>
+<body style="height: 100px;">
 
 
   <div id="nav">
-    <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
+    <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="80">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -81,8 +81,9 @@
 
 
                 <li>
-                  <a href="">Ventas</a>
+                  <a href="ventas.php">Ventas</a>
                   <a href="compras.php">Compras</a>
+                  <a href="view_compras.php">Listado de Compras</a>
                 </li>
 
             </li>
@@ -124,16 +125,3 @@
 </html>
 
 
-<script>
-  $(window).scroll(function() {
-    if ($(document).scrollTop() > 150) {
-      alert('hi');
-      $('.logo').height(200);
-
-    } else {
-      $('.logo').height(100);
-
-    }
-
-  });
-</script>

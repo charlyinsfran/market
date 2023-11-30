@@ -23,11 +23,7 @@ if (isset($_SESSION['usuario'])) {
         
         <title>Categorias</title>
         <?php require_once "menu.php";
-        /*date_default_timezone_set('America/Asuncion');
-                $date = date("d-m-Y h:i:s");
-
-
-                echo $date;*/
+        
         ?>
     </head>
 
@@ -35,9 +31,6 @@ if (isset($_SESSION['usuario'])) {
         <div class="col-sm-2">
             <div class="container">
                 <div class="row">
-                    <br>
-                    <br>
-
                     <span class="btn btn-primary glyphicon" 
                     style="width: 190px; height: 44px; font-family:SANS-SERIF; font-size: 130%;" 
                     data-toggle="modal" data-target="#nuevaCategoria">Agregar Nuevo</span>
@@ -47,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
 
         </div>
 
-        <div class="col-sm-9">
+        <div class="col-sm-9" style="height: 100px;">
 
             <div id="tablaCategoriaLoad" style="align-content:left;">
 

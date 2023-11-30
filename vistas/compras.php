@@ -71,11 +71,9 @@ if(isset($_SESSION['usuario'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../imagenes/compra.png">
-    
-   
-    
+    <link rel="stylesheet" href="estilocompras.css">
 
-    <title>COMPRAS</title>
+    <title>COMPRAS - DCHRSOFT</title>
 
     <?php require_once "menu.php"; ?>
 
@@ -88,9 +86,9 @@ if(isset($_SESSION['usuario'])){
                 <form action="modelo_compras.php" method="post" class="form-group">
                 <table class="table table-bordered">
                     <tr style= "background-color: #cdf6fc;">
-                    <td style="text-align: center;"><?php echo "Factura Nro: "."<strong>".($consulta->factura+1)."</strong>"; ?></td>
+                    <td style="text-align: center;"><?php echo "Factura Nro: 001-001-000"."<strong>".($consulta->factura+1)."</strong>"; ?></td>
                         <td colspan="1" style="text-align: center;"><p id="time"></p></td>
-                            <td style="text-align: center;"><p id="date">date</p></td>
+                            <td colspan="1" style="text-align: center;"><p id="date">date</p></td>
                         
                     </tr>
                 <tr>    
@@ -105,7 +103,11 @@ if(isset($_SESSION['usuario'])){
                     <input type="submit" class="btn btn-danger" name="operacion" id="cancelar" value="CANCELAR">
                     
                     <?php }?>
-                    <a href="../vistas/proveedores.php" class="btn btn-info"><span class="glyphicon glyphicon-plus"><strong>AÑADIR</strong></span></a>
+
+                    <?php if(!isset($_SESSION['proveedor']) && $_SESSION['proveedor']=="") {?>
+                    <a class="btn" style="background-color: BLUE;">
+                    <span class="glyphicon glyphicon-plus" style="color:#cdf6fc;" data-toggle="modal" data-target="#verproveedores"><strong style="color:#cdf6fc;">NEW</strong></span></a>
+                    <?php }?>
                 </td>
                 </tr>
                 
@@ -124,7 +126,7 @@ if(isset($_SESSION['usuario'])){
 
 <?php if(isset($_SESSION['proveedor'])){ ?>
                 <form action="modelo_compras.php" method="post" class="form-group">
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="overflow:scroll; height:200px; width:1200px;"      >
                 <tr>
                     <td><label>PRODUCTO</label></td>
                     <td><input type="text" class="form-control" name="producto" id="producto" 
@@ -195,38 +197,38 @@ if(isset($_SESSION['usuario'])){
                 <?php endforeach;?>
 
                 <tr><td colspan="4" style="text-align: right; font-family: 'Times New Roman', serif;">
-                        <strong style="font-size: 1.5em;">IVA</strong>
-                        <td colspan="2" style="font-size:1.5em; font-family:'Trebuchet MS', sans-serif; background-color: #FFFF00; text-align: center;">
+                        <strong style="font-size: 1.3em;">IVA</strong>
+                        <td colspan="2" style="font-size:1.3em; font-family:'Trebuchet MS', sans-serif; background-color: #FFFF00; text-align: center;">
                     <?php echo "GS. ".number_format($imp_iva, 0, ",", "."); ?></td>
                     </td></tr>
 
 
                 <tr><td colspan="4" style="text-align: right; font-family: 'Times New Roman', serif;">
                         <strong style="font-size: 1.5em;">SUBTOTAL</strong>
-                        <td colspan="2" style="font-size:1.5em; font-family:'Trebuchet MS', sans-serif; background-color: #FFFF00; text-align: center;">
+                        <td colspan="2" style="font-size:1.3em; font-family:'Trebuchet MS', sans-serif; background-color: #FFFF00; text-align: center;">
                     <?php echo "GS. ".number_format($imp_subtotal, 0, ",", "."); ?> <input type="text" name="totalfactura" id="totalfactura" value="<?php echo $imp_subtotal;?>"  hidden></td>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4" style="text-align: right; font-family: 'Times New Roman', serif;">
-                        <strong style="font-size: 1.5em;">TOTAL</strong>
+                        <strong style="font-size: 1.3em;">TOTAL</strong>
                     </td>
-                    <td colspan="2" style="font-size:1.5em; font-family:'Trebuchet MS', sans-serif; background-color: #FFFF00; text-align: center;">
+                    <td colspan="2" style="font-size:1.3em; font-family:'Trebuchet MS', sans-serif; background-color: #FFFF00; text-align: center;">
                     <?php echo "GS. ".number_format($total, 0, ",", "."); ?><input type="text" name="subtotalfactura" id="subtotalfactura" value="<?php echo $total;?>"  hidden></td>
                 </tr>
                 
                 </table>
                 
                 <?php }if(isset($_SESSION['productos'])){?>
+                    <label>Forma de Pago</label>
                     <select class="form-control" style="height:30px; width:150px;" name="condicion" id="condicion">
-                        <option value="A">Forma de Pago</option>
                         <option value="Contado">Contado</option>
                         <option value="Credito">Credito</option>
                     </select>
-                    <br><br>
+                    <br>
                     
-                <td><button class="btn btn-success" name="operacion" id="generarcompra" value="generarcompra">Guardar</button></td>
-                <td><button class="btn btn-danger" name="operacion" id="cancelar2" value="cancelar2">Anular</button></td>
+                <td><span class="btn btn-success" data-toggle="modal" data-target="#comprar" id="vermodalcompra" name="vermodalcompra">Grabar</span></td>
+                <td><button class="btn btn-danger" name="operacion" id="cancelar2" value="cancelar2" >Anular</button></td>
                 
 
                 <?php }?>
@@ -235,9 +237,122 @@ if(isset($_SESSION['usuario'])){
         </div>
     </div>
 
+
+
+
+    <div class="modal fade" id="verproveedores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document" style="width: 600px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">View Proveedores</h4>
+                    </div>
+                    <div class="modal-body" align="center">
+
+                        <table class="table-hover table-condensed table-bordered" style="width: 500px;">
+                            <thead>
+                            <tr style="text-align: center; font-weight: bold;">
+                                <td>Codigo</td>
+                                 <td>Razon Social</td>
+                                 <td>Ruc</td>
+                                 <td>Telefono</td>
+                                 <td>+</td>
+                             </tr>
+                        </thead>
+                    <tbody>
+                <?php
+    require_once "../clases/Conexion.php";
+    $c = new conectar();
+    $conexion = $c->conexion();
+    $sql = "SELECT idproveedores,razon_social,ruc,telefono from proveedores  ORDER BY idproveedores";
+    
+    $result = mysqli_query($conexion, $sql);
+    while ($ver = mysqli_fetch_row($result)) :
+    ?>
+
+        <tr style="font-size: 14px;" >
+            <td style="width: 20px; text-align:center; height:10px;"><?php echo $ver[0]; ?></td>
+            <td style="text-align: center; height:10px;"><?php echo $ver[1]; ?></td>
+            <td style="text-align: center; height:10px;"><?php echo $ver[2]; ?></td>
+            <td style="text-align: center; height:10px;"><?php echo $ver[3]; ?></td>
+            <td><span class="btn btn-danger btn-sm">
+                <span class="glyphicon glyphicon-menu-left" onclick="cargar('<?php echo $ver[2] ?>')"></span>
+            </span></td>
+            
+            </tr>
+
+
+    <?php endwhile; ?>
+    </tbody>
+
+                        </table>
+                        
+
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="comprar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document" style="width: 300px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Generar Compra</h4>
+                    </div>
+                    <div class="modal-body">
+                    <form id="frm_grabar" action="modelo_compras.php" method="POST">
+                            
+                            <label>Total</label>
+                            <input type="text" class="form-control input-sm" id="totalmodal" name="totalmodal">
+                            <label>Metodo de Pago</label>
+                            <input type="text" class="form-control input-sm" id="pagomodal" name="pagomodal">
+                            <p></p>
+                            <button class="btn btn-success glyphicon glyphicon-check" name="operacion" id="generarcompra" value="generarcompra" ></button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <script src="../js/clock.js"></script>
 </body>
 </html>
+
+<script>
+    
+    $('#comprar').on('shown.bs.modal', function () {
+         //$('#dineromodal').focus();
+         var datoformapago = document.getElementById("condicion").value;
+         var totalapagar = document.getElementById("subtotalfactura").value;
+         document.getElementById("totalmodal").value = totalapagar;
+         document.getElementById("pagomodal").value = datoformapago;
+
+        })
+    
+                 
+              
+    
+        
+</script>
+
+<script>
+    function cargar(ruc){
+        //alert(ruc);
+        var dato = ruc;
+        document.getElementById("rucproveedor").value = dato;
+        $('#verproveedores').modal('hide');
+    }
+</script>
 <script>
 $(document).ready(function() {
     //$('#rucproveedor').focus();  
@@ -295,6 +410,7 @@ $(document).ready(function() {
         case 2:
             echo '<script language="Javascript">
             alertify.success("Debes ingresar ruc/codigo/nombre del proveedor");
+            $("#rucproveedor").focus();
             </script>';
     
             break;

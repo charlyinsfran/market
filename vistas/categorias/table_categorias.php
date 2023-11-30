@@ -12,8 +12,7 @@ $result = mysqli_query($conexion, $sql);
 
 ?>
 
-<label style="font-size: 2em; text-align:center">Categorias de Productos</label>
-<p></p>
+<!--<label style="font-size: 2em; text-align:center">Categorias de Productos</label>-->
 
 
 
@@ -38,11 +37,11 @@ $result = mysqli_query($conexion, $sql);
     while ($ver = mysqli_fetch_row($result)) :
     ?>
 
-        <tr style="font-size: 13;">
-            <td style="width: 20px; text-align:center"><?php echo utf8_encode($ver[0]); ?></td>
-            <td style="text-align: center;"><?php echo strtoupper($ver[1]); ?></td>
+        <tr style="font-size: 12px; ">
+            <td style="width: 20px; text-align:center; height:10px;"><?php echo utf8_encode($ver[0]); ?></td>
+            <td style="text-align: center; height:10px;"><?php echo strtoupper($ver[1]); ?></td>
 
-            <td style="width: 20px; text-align:center">
+            <td style="width: 10px; text-align:center">
                 <span class="btn btn-warning btn-sm">
                     <span class="glyphicon glyphicon-pencil" 
                     data-toggle="modal" data-target="#actualizaCategorias" 

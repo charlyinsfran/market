@@ -13,7 +13,7 @@ switch ($operacion){
     case 'BUSCAR': buscarproveedor();
             break;
 
-    case 'cancelar': cancelar();
+    case 'CANCELAR': cancelar();
             break;
     
      case 'buscarproducto': buscarproductos();
@@ -109,10 +109,6 @@ function guardarcompra(){
     $bd->query("INSERT INTO compras(idproveedores,fecha,id_usuario,fecha_save,condicion,total,subtotal) values
      ('$proveedor->idproveedores','$fecha','$idusuario','$fecha_guardado','$condicion','$total','$subtotal')");
     $venta = $bd->lastInsertId();
-
-    
-   
-
 
     foreach($productos as $p){
        
