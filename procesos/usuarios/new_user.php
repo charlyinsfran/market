@@ -11,7 +11,7 @@ $email = $_POST['email'];
 $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
 $usuarionombre = $_POST['user'];
-$contrasenha = $_POST['password'];
+$contrasenha = sha1($_POST['password']);
 $id_rol = $_POST['tipousuario'];
 
 

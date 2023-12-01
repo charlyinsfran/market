@@ -1,0 +1,14 @@
+table.dataTable thead{
+    background-color: #22a593;
+    color: azure;
+}
+
+.page-item.active .page-link{
+    background-color:green !important;
+}
+.page-link{
+    background-color: black !important;
+}
+
+ 
+

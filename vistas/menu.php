@@ -42,7 +42,8 @@
 
           <ul class="nav navbar-nav navbar-left">
 
-            <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home" data-toggle="modal" data-target="#presentacion"></span> Inicio</a></li>
+            <li><a href="inicio.php"><span class="glyphicon glyphicon-home"
+             data-toggle="modal" data-target="#presentacion"></span> Inicio</a></li>
 
 
             </li>
@@ -106,8 +107,16 @@
             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-user"></span> <strong style="text-decoration: underline;">Usuario:</strong> <?php echo strtoupper($_SESSION['usuario']);?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li> <a style="color: red" href="../procesos/salir.php"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+            <?php if($tipo != "caja"){?>
 
+              <li> <a style="color: red" href="../procesos/salir.php"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+              
+              <?php }?>
+              <?php if($tipo == "caja"){?>
+            <li><a href="cierrecaja.php"> Ciere Caja / Exit</a>
+            </li>
+            <?php }?>
+            
             </ul>
           </li>
           </ul>

@@ -20,7 +20,7 @@ $result = mysqli_query($conexion, $sql);
 
 <table class="table table-hover table-condensed table-bordered" id="tabladinamica" style="text-align: center;">
     <thead>
-    <tr style="font-weight: bold; background-color: #f1f8f9; text-align: center;">
+    <tr style="font-weight: bold;text-align: center;">
         <td>Compra Nro</td>
         <td>Proveedor</td>
         <td>Producto</td>
@@ -37,7 +37,7 @@ $result = mysqli_query($conexion, $sql);
     <tbody>
     
     <?php 
-    //echo number_format($ver[6], 0, ",", ".");
+    
 while ($ver = mysqli_fetch_row($result)) :
 
 $iva = $ver[5];
@@ -86,6 +86,7 @@ if($iva == "5"){
 <script type="text/javascript">
     $(document).ready(function(){
    $('#tabladinamica').DataTable({
+
     dom: 'Bfrtip',
     buttons: [
             {
@@ -113,6 +114,7 @@ if($iva == "5"){
         "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
         "infoPostFix": "",
         "search": "Buscar:",
+        searchPlaceholder: "BUSCAR POR CODIGO Ó DESCRIPCION",
         "infoFiltered": "(filtrado de un total de _MAX_ registros)",
         "loadingRecords": "Cargando...",
         "lengthMenu": "Mostrar _MENU_ registros",

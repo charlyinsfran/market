@@ -89,7 +89,7 @@ $.ajax({
     success:function(r){
 
         if(r==1){
-            window.location = "vistas/inicio.php";
+            window.location = "vistas/aperturacaja.php";
             $('#frm_login')[0].reset();
         }else{
             alertify.error("Datos Incorrectos");
@@ -123,7 +123,7 @@ function presionarenter(){
         success:function(r){
 
             if(r==1){
-                window.location = "vistas/inicio.php";
+                window.location = "vistas/aperturacaja.php";
                 $('#frm_login')[0].reset();
             }else{
                 alertify.error("Datos Incorrectos");
