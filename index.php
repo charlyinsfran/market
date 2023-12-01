@@ -90,7 +90,7 @@ $.ajax({
 
         if(r==1){
             window.location = "vistas/aperturacaja.php";
-            $('#frm_login')[0].reset();
+            //$('#frm_login')[0].reset();
         }else{
             alertify.error("Datos Incorrectos");
         }
@@ -124,7 +124,7 @@ function presionarenter(){
 
             if(r==1){
                 window.location = "vistas/aperturacaja.php";
-                $('#frm_login')[0].reset();
+                //$('#frm_login')[0].reset();
             }else{
                 alertify.error("Datos Incorrectos");
             }

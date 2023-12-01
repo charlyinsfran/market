@@ -14,7 +14,7 @@ if (isset($_SESSION['usuario'])) {
     <head>
         <meta charset="UTF-8">
         <script src="../js/funciones.js"></script>
-        <link rel="shortcut icon" href="../imagenes/categorizacion.png">
+        <link rel="shortcut icon" href="../imagenes/apertura-caja.png">
         <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.css">
         <link rel="stylesheet" href="../librerias/datatables/css/dataTables.bootstrap.min.css">
@@ -22,7 +22,7 @@ if (isset($_SESSION['usuario'])) {
         <script src="../librerias/DataTables/js/jquery.dataTables.js"></script>
         <script src="../librerias/DataTables/js/dataTables.bootstrap.js"></script>
 
-        <title>Categorias</title>
+        <title>Apertura Caja - DCHR_SOFT</title>
         <?php require_once "menu.php";
 
         ?>
@@ -56,7 +56,7 @@ if (isset($_SESSION['usuario'])) {
 
         </div>
 
-        <!-- MODAL PARA AGREGAR NUEVA CATEGORIA	-->
+        <!-- 	-->
 
         <div class="modal fade" id="aperturacaja" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-sm" role="document">
@@ -78,7 +78,8 @@ if (isset($_SESSION['usuario'])) {
                                                                                     echo $fecha ?>" style="font-size: 1.5em; font-family: 'Trebuchet MS', sans-serif;" readonly id="fecha" name="fecha">
                             <p></p>
                             <label style="font-size: 1.2em; font-family: 'Trebuchet MS', sans-serif; ">Monto</label>
-                            <input type="text" class="form-control input-sm" onkeyup="format(this)" onchange="format(this)" style="font-size: 1.3em; font-family: 'Trebuchet MS', sans-serif; height: 35px;" id="montototal" name="montototal">
+                            <input type="text" class="form-control input-sm" onkeyup="format(this)" onchange="format(this)"
+                             style="font-size: 1.3em; font-family: 'Trebuchet MS', sans-serif; height: 35px;" id="montototal" name="montototal">
 
 
                         </form>
@@ -117,6 +118,9 @@ if (isset($_SESSION['usuario'])) {
     <script type="text/javascript">
         $(document).ready(function() {
             $("#aperturacaja").modal("show");
+            $("#aperturacaja").on('shown.bs.modal', function(){
+                $("#montototal").focus();
+            });
             $("#aperturacaja").modal({
                 backdrop: 'static'
             });
@@ -127,7 +131,9 @@ if (isset($_SESSION['usuario'])) {
 
 
                 if (vacios > 0) {
+                    $('#montototal').focus();
                     alertify.alert("No se permiten campos vacíos");
+                    
                     return false;
                 }
 
