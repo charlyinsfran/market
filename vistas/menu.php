@@ -21,14 +21,15 @@
 
 </head>
 
-<body style="height: 100px;">
+<body style="#my{ zoom: 60%;}">
 
 
   <div id="nav">
-    <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="80">
+    <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="50">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+           aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -125,12 +126,14 @@
     </div>
   </div>
 
-  <body>
-  </body>
 
-  </div>
 </body>
 
 </html>
+
+
+<script>
+  $(document).body.style.zoom="90%";
+</script>
 
 

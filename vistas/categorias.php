@@ -1,10 +1,6 @@
 <?php
-
-
 session_start();
-
 if (isset($_SESSION['usuario'])) {
-
 ?>
 
     <!DOCTYPE html>
@@ -22,17 +18,17 @@ if (isset($_SESSION['usuario'])) {
         <script src="../librerias/DataTables/js/dataTables.bootstrap.js"></script>
         
         <title>Categorias</title>
-        <?php require_once "menu.php";
         
+        <?php require_once "menu.php";
         ?>
     </head>
 
     <body>
-        <div class="col-sm-2">
+        <div class="col-sm-4">
             <div class="container">
                 <div class="row">
                     <span class="btn btn-primary glyphicon" 
-                    style="width: 190px; height: 44px; font-family:SANS-SERIF; font-size: 130%;" 
+                    style="width: 190px; height: 44px; font-family:SANS-SERIF; font-size: 110%;" 
                     data-toggle="modal" data-target="#nuevaCategoria">Agregar Nuevo</span>
 
                 </div>
@@ -40,7 +36,7 @@ if (isset($_SESSION['usuario'])) {
 
         </div>
 
-        <div class="col-sm-9" style="height: 100px;">
+        <div class="col-sm-6">
 
             <div id="tablaCategoriaLoad" style="align-content:left;">
 

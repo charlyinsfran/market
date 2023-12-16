@@ -1,10 +1,10 @@
 <?php
 error_reporting (0); 
-
+/*
 echo "<pre>";
 print_r($_REQUEST['cancelar2']);
 echo "<pre>";
-
+*/
 session_start();
 
 $operacion = $_REQUEST['operacion'];

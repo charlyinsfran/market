@@ -12,16 +12,10 @@ $result = mysqli_query($conexion, $sql);
 
 ?>
 
-<!--<label style="font-size: 2em; text-align:center">Categorias de Productos</label>-->
-
-
-
-
-
 <table class="table table-hover table-condensed table-bordered" id="tabladinamica">
     
     <thead>
-    <tr style="font-weight: bold; background-color: #86e9f8; text-align: center;">
+    <tr style=" background-color: #86e9f8; text-align: center;">
         <td>Codigo</td>
         <td>Descripcion</td>
         <td>Editar</td>
@@ -37,9 +31,9 @@ $result = mysqli_query($conexion, $sql);
     while ($ver = mysqli_fetch_row($result)) :
     ?>
 
-        <tr style="font-size: 12px; ">
-            <td style="width: 20px; text-align:center; height:10px;"><?php echo utf8_encode($ver[0]); ?></td>
-            <td style="text-align: center; height:10px;"><?php echo strtoupper($ver[1]); ?></td>
+        <tr style="font-size: 10px; ">
+            <td style="width: 10px; text-align:center; height:5px;"><?php echo utf8_encode($ver[0]); ?></td>
+            <td style="text-align: center;"><?php echo strtoupper($ver[1]); ?></td>
 
             <td style="width: 10px; text-align:center">
                 <span class="btn btn-warning btn-sm">
@@ -69,26 +63,6 @@ $result = mysqli_query($conexion, $sql);
     $(document).ready(function(){
    $('#tabladinamica').DataTable({
 
-    dom: 'Bfrtip',
-    buttons: [
-            {
-                extend:    'copyHtml5',
-                className: 'btn btn-success',
-                titleAttr: 'Copiar'
-            },
-            {
-                extend:    'excelHtml5',
-                titleAttr: 'Excel'
-            },
-            {
-                extend:    'csvHtml5',
-                titleAttr: 'CSV'
-            },
-            {
-                extend:    'pdfHtml5',
-                titleAttr: 'PDF'
-            }
-        ],
        "language": {
         "decimal": ",",
         "thousands": ".",

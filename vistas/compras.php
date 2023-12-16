@@ -126,7 +126,7 @@ if(isset($_SESSION['usuario'])){
 
 <?php if(isset($_SESSION['proveedor'])){ ?>
                 <form action="modelo_compras.php" method="post" class="form-group">
-                <table class="table table-bordered" style="overflow:scroll; height:200px; width:1200px;"      >
+                <table class="table table-bordered" style="overflow:scroll;">
                 <tr>
                     <td><label>PRODUCTO</label></td>
                     <td><input type="text" class="form-control" name="producto" id="producto" 
@@ -314,7 +314,7 @@ if(isset($_SESSION['usuario'])){
                             <label>Metodo de Pago</label>
                             <input type="text" class="form-control input-sm" id="pagomodal" name="pagomodal">
                             <p></p>
-                            <button class="btn btn-success glyphicon glyphicon-check" name="operacion" id="generarcompra" value="generarcompra" ></button>
+                            <button class="btn btn-success glyphicon glyphicon-check" name="operacion" id="generarcompra" value="generarcompra"></button>
                         </form>
                     </div>
                     <div class="modal-footer">

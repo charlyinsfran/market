@@ -13,9 +13,6 @@
 <link rel="stylesheet" type="text/css" href="../librerias/datatables/css/dataTables.bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../librerias/datatables/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../librerias/font-awesome/css/all.css">
-
-
-
 <script src="../librerias/jquery-3.2.1.min.js"></script>
 <script src="../librerias/alertifyjs/alertify.js"></script>
 <script src="../librerias/bootstrap/js/bootstrap.js"></script>
@@ -23,7 +20,6 @@
 <script src="../js/funciones.js"></script>
 <script src="../librerias/DataTables/js/jquery.dataTables.js"></script>
 <script src="../librerias/DataTables/js/dataTables.bootstrap.js"></script>
-
 <script src="../librerias/DataTables/js/dataTables.buttons.min.js"></script>
 <script src="../librerias/DataTables/js/pdfmake.min.js"></script>
 <script src="../librerias/DataTables/js/jszip.min.js"></script>
