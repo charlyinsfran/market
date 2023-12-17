@@ -40,7 +40,7 @@ if (isset($_SESSION['usuario'])) {
                     <br>
                     <br>
 
-                    <span class="btn btn-primary glyphicon glyphicon-plus" style="width: 190px; height: 44px;" data-toggle="modal" data-target="#nuevoproveedor"> Nuevo</span>
+                    <span class="btn btn-primary"style="width: 190px; height: 44px; font-family:SANS-SERIF; font-size: 130%;" data-toggle="modal" data-target="#nuevoproveedor"> Nuevo</span>
 
                 </div>
             </div>

@@ -95,10 +95,13 @@
                 </head>
 
                 <body>
+                    
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-15">
                                 <form action="modelo_ventas.php" method="post" class="form-group" id="for_venta">
+                                <button  name="operacion" class="btn btn-sm" value="prueba">Prueba
+                                                    </button>
                                     <table class="table table-bordered">
                                         <tr style="background-color: #cdf6fc; height: 5px; width: 10px;">
                                             <td rowspan="2" style="background-color: white; text-align: center;">
@@ -184,15 +187,14 @@
                                     <div style="overflow-y: scroll; height: 200px;">
                                         <table class="table table-bordered table-fixed" style="font-size: 0.9em;">
 
-                                            <tr style="background-color: #046606;color: rgb(241, 245, 179); text-align: center !important; position: sticky;
-    top: 0;">
+                                            <tr style="background-color: #046606;color: rgb(241, 245, 179); text-align: center !important; position: sticky; top: 0;">
                                                 <th style="text-align: center;">Código</th>
                                                 <th style="text-align: center;">Descripcion</th>
                                                 <th style="text-align: center;">Precio</th>
                                                 <th style="text-align: center;">Cantidad</th>
                                                 <th style="text-align: center;">Iva</th>
                                                 <th style="text-align: center;">SUBTOTAL</th>
-                                                <th>Opcion</th>
+                                                
                                             </tr>
 
                                             <?php foreach ($producto as $p) :
@@ -226,9 +228,7 @@
                                                     <td style="text-align: center;"><?php echo "Gs. " . ' ' . number_format((($p->precio * $p->cantidadingresada) - ($p->precio * $p->cantidadingresada) * $iva), 0, ",", "."); ?></td>
                                                     <input type="text" name="subtotal" id="subtotal" value="<?php echo $p->precio * $p->cantidadingresada; ?>" hidden>
 
-                                                    <td><button style="background-color: #90e925;" class="btn" name="operacion" value="eliminarproducto" id="eliminarproducto">
-                                                            <img src="../imagenes/iconos/addcarrito.svg" alt="x" style="color: white;" />
-                                                            <span class=""></span><input type="text" value="<?php echo $p->id_producto; ?>" id="productoborrado" name="productoborrado" hidden></td>
+                    
                                                 </tr>
 
 
@@ -425,6 +425,44 @@
                 </body>
 
                 </html>
+
+
+                <script>
+                    $(document).ready(function() {
+            $('#btnGuardar').click(function() {
+
+                $vacios = validarFormVacio('frm_clientes');
+
+
+                if (vacios > 0) {
+                    alertify.alert("No se permiten campos vacíos");
+                    return false;
+                }
+
+                datos = $('#frm_clientes').serialize();
+                $.ajax({
+
+                    type: "POST",
+                    data: datos,
+                    url: "../procesos/clientes/nuevo_cliente.php",
+                    success: function(r) {
+                        
+
+                        if (r == 1) {
+                            alertify.success("Cliente Agregado");
+                            $('#frm_clientes')[0].reset();
+
+                        } else {
+                            alertify.error("Error al agregar o Dato Duplicado");
+                        }
+
+                    }
+                });
+            });
+        });
+                </script>
+
+
 
                 <script>
                     $(document).ready(function() {

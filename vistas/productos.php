@@ -64,7 +64,7 @@ if (isset($_SESSION['usuario'])) {
         <!-- MODAL PARA AGREGAR productos	-->
 
         <div class="modal fade" id="nuevoProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -88,7 +88,7 @@ if (isset($_SESSION['usuario'])) {
                                 <?php endwhile; ?>
                             </select>
                             <label>Imagen</label>
-                            <input type="file" id="imagen" name="imagen">
+                            <input type="file" id="imagen" name="imagen" class="form-control input-sm">
                             <label>Stock</label>
                             <input type="text" class="form-control input-sm" id="stock" name="stock" value="0" disabled>
                             <label>Precio</label>

@@ -12,20 +12,16 @@ if(isset($_SESSION['usuario'])){
     $sql = "SELECT count(id_producto) from productos";
     $result = mysqli_query($conexion, $sql);
 
-    //query para mostrar la cantidad de proveedores
-    $proveedores = "SELECT count(idproveedores) from proveedores";
-    $ret_proveedores = mysqli_query($conexion,$proveedores);
-    
-    //query para mostrar la cantidad de categorias
-    $categorias = "SELECT count(id_categoria) from categorias";
-    $ret_categorias= mysqli_query($conexion,$categorias);
-
-    //query para mostrar la cantidad de categorias
+    //query para mostrar la cantidad de clientes
     $clientes = "SELECT count(idclientes) from clientes";
     $ret_clientes= mysqli_query($conexion,$clientes);
 
-    $compras = "SELECT COUNT(idcompras) from compras;";
+
+    $compras = "SELECT SUM(total) from compras;";
     $ret_compras= mysqli_query($conexion,$compras);
+
+    $ventas = "SELECT SUM(total) from ventas;";
+    $ret_ventas= mysqli_query($conexion,$ventas);
 
 ?>
 
@@ -48,7 +44,7 @@ if(isset($_SESSION['usuario'])){
   <div class="row">
     <div class="col-lg-3 col-sm-6">
       <div class="circle-tile">
-        <a href="#"><div class="circle-tile-heading dark-blue"><i class="glyphicon glyphicon-barcode gi-1"></i></div></a>
+        <a href="#"><div class="circle-tile-heading dark-blue"><i class="glyphicon glyphicon-barcode gi-1" style="padding-top: 10px;"></i></div></a>
         <div class="circle-tile-content dark-blue">
           <div class="circle-tile-description text-faded"> Productos</div>
           <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($result)) : echo $ver[0];  endwhile; ?></div>
@@ -57,31 +53,12 @@ if(isset($_SESSION['usuario'])){
       </div>
     </div>
      
-    <div class="col-lg-3 col-sm-6">
-      <div class="circle-tile ">
-        <a href="#"><div class="circle-tile-heading gray"><i class="glyphicon glyphicon-bed gi-2"></i></div></a>
-        <div class="circle-tile-content gray">
-          <div class="circle-tile-description text-faded"> Proveedores </div>
-          <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_proveedores)) : echo $ver[0];  endwhile; ?></div>
-          <a class="circle-tile-footer" href="proveedores.php">Ver<i class=""></i></a>
-        </div>
-      </div>
-    </div>
+    
+    
     
     <div class="col-lg-3 col-sm-6">
       <div class="circle-tile ">
-        <a href="#"><div class="circle-tile-heading blue"><i class="glyphicon glyphicon-list-alt gi-1"></i></div></a>
-        <div class="circle-tile-content blue">
-          <div class="circle-tile-description text-faded"> Categorias </div>
-          <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_categorias)) : echo $ver[0];  endwhile; ?></div>
-          <a class="circle-tile-footer" href="categorias.php">Ver<i class=""></i></a>
-        </div>
-      </div>
-    </div> 
-
-    <div class="col-lg-3 col-sm-6">
-      <div class="circle-tile ">
-        <a href="#"><div class="circle-tile-heading purple"><i class="glyphicon glyphicon-stats gi-1"></i></div></a>
+        <a href="#"><div class="circle-tile-heading purple"><i class="glyphicon glyphicon-bookmark gi-1" style="padding-top: 10px;"></i></div></a>
         <div class="circle-tile-content purple">
           <div class="circle-tile-description text-faded"> Clientes </div>
           <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_clientes)) : echo $ver[0];  endwhile; ?></div>
@@ -92,10 +69,21 @@ if(isset($_SESSION['usuario'])){
 
     <div class="col-lg-3 col-sm-6">
       <div class="circle-tile ">
-        <a href="#"><div class="circle-tile-heading green"><i class="glyphicon glyphicon-stats gi-1"></i></div></a>
+        <a href="#"><div class="circle-tile-heading green"><i class="glyphicon glyphicon-shopping-cart gi-1" style="padding-top: 10px;"></i></div></a>
         <div class="circle-tile-content green">
           <div class="circle-tile-description text-faded"> Compras de Productos </div>
-          <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_compras)) : echo $ver[0];  endwhile; ?></div>
+          <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_compras)) : echo 'GS. '.number_format($ver[0], 0, ",", ".");  endwhile; ?></div>
+          <a class="circle-tile-footer" href="view_compras.php">Ver<i class=""></i></a>
+        </div>
+      </div>
+    </div> 
+
+    <div class="col-lg-3 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading blue"><i class="glyphicon glyphicon-usd gi-1" style="padding-top: 10px;"></i></div></a>
+        <div class="circle-tile-content blue">
+          <div class="circle-tile-description text-faded"> Ventas</div>
+          <div class="circle-tile-number text-faded "><?php while ($ver = mysqli_fetch_row($ret_ventas)) : echo 'GS. '.number_format($ver[0], 0, ",", ".");  endwhile; ?></div>
           <a class="circle-tile-footer" href="view_compras.php">Ver<i class=""></i></a>
         </div>
       </div>
