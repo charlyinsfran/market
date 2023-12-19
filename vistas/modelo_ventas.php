@@ -95,8 +95,10 @@ function grabarproducto()
      ($p->id_producto,$venta,$p->precio,$p->iva,$p->cantidadingresada)");
     }
 
-    header("location:ventas.php");
+    
+    imprimir();
     postventa();
+    
 }
 
 function vaciar_cliente()
@@ -149,20 +151,31 @@ function eliminarproducto()
 
 function imprimir()
 {
+    
+
     include "fpdf/fpdf.php";
 
     include "../clases/Conexion.php";
 
     $c = new conectar();
     $conexion = $c->conexion();
+
+    $lastventa = "SELECT max(idventas) from ventas";
+            $ret_lastventa = mysqli_query($conexion,$lastventa);
+            while ($ret_lastventavista = mysqli_fetch_row( $ret_lastventa)) {
+                $lastventaid= $ret_lastventavista[0];
+                
+
+            }
+
+
+
     $sql = "SELECT p.id_producto,p.nombre,p.precio,dv.cantidad,dv.iva,v.subtotal,v.total,CONCAT(c.nombre, ' ',c.apellido) from ventas v 
             JOIN detalle_ventas dv ON v.idventas = dv.venta_nro
             join productos p on p.id_producto = dv.idproducto
-            JOIN clientes c on c.idclientes = v.idcliente";
+            JOIN clientes c on c.idclientes = v.idcliente 
+            WHERE v.idventas = '$lastventaid' limit 10";
     $result = mysqli_query($conexion, $sql);
-
-
-
 
 
 
@@ -170,7 +183,7 @@ function imprimir()
     {
 
         // Cabecera de página
-        function Header()
+        public function Header()
         {
 
             $this->Image("fpdf/cabecera.png", 185, 5, 20); //logo de la empresa,moverDerecha,moverAbajo,tamañoIMG
@@ -220,22 +233,38 @@ function imprimir()
             $this->SetTextColor(255, 255, 255); //colorTexto
             $this->SetDrawColor(163, 163, 163); //colorBorde
             $this->SetFont('Arial', 'B', 10);
-            $this->SetX(20);
+            $this->SetX(40);
             $this->Cell(15, 10, utf8_decode('Codigo'), 1, 0, 'C', 1);
             $this->Cell(40, 10, utf8_decode('Producto'), 1, 0, 'C', 1);
             $this->Cell(20, 10, utf8_decode('Precio'), 1, 0, 'C', 1);
-            $this->Cell(20, 10, utf8_decode('Cantidad'), 1, 0, 'C', 1);
             $this->Cell(15, 10, utf8_decode('IVA %'), 1, 0, 'C', 1);
-            $this->Cell(25, 10, utf8_decode('Subtotal'), 1, 0, 'C', 1);
-            $this->Cell(25, 10, utf8_decode('Total'), 1, 1, 'C', 1);
+            $this->Cell(15, 10, utf8_decode('Monto'), 1, 0, 'C', 1);
+            $this->Cell(20, 10, utf8_decode('Cantidad'), 1, 1, 'C', 1);
+            
         }
 
         // Pie de página
-        function Footer()
+        public function Footer()
         {
             $c = new conectar();
             $conexion = $c->conexion();
-            $clientemostrar = "SELECT CONCAT(c.nombre, ' ',c.apellido),c.cedula,c.telefono FROM ventas v join clientes c on c.idclientes = v.idcliente";
+            $sql = "SELECT subtotal,total from ventas";
+//--------------------- obtiene la ultima factura --------------------------------------------------------
+
+
+
+//------------------------ obtiene el ultimo cliente al que se le vendio---------------------------------------------------------
+            $consult = "SELECT max(idventas) from ventas";
+            $retorno = mysqli_query($conexion,$consult);
+            while ($ret_vista = mysqli_fetch_row($retorno)) {
+                $datom = $ret_vista[0];
+                
+
+            }
+
+//-------------------------------- obtiene datos del cliente  y los carga en variables-----------------------------------------------------
+            $clientemostrar = "SELECT CONCAT(c.nombre, ' ',c.apellido),c.cedula,c.telefono FROM ventas v join clientes c on c.idclientes = v.idcliente
+             WHERE v.idventas = '$datom'";
             $client_result = mysqli_query($conexion, $clientemostrar);
 
             while ($vista = mysqli_fetch_row($client_result)) {
@@ -245,6 +274,26 @@ function imprimir()
 
             }
 
+            $liquidacion =  mysqli_query($conexion, $sql);
+            while ($view_liq = mysqli_fetch_row($liquidacion)){
+                $total = $view_liq[1];
+                $subtotal = $view_liq[0];
+            }
+
+
+
+            $this->SetY(-90);
+            $this->SetX(20);
+            $this->SetFont('Arial', '', 9);
+            $this->Cell(50, 10, utf8_decode('Sub Total: Gs. ' . number_format($subtotal, 0, ",", ".")), 0, 0, '', 0);
+            $this->Ln(7);
+            
+            $this->SetY(-100);
+            $this->SetX(20);
+            $this->SetFont('Arial', '', 9);
+            $this->Cell(50, 10, utf8_decode('Total: Gs. ' . number_format($total, 0, ",", ".")), 0, 0, '', 0);
+            
+
             $this->SetY(-25); // Posición: a 1,5 cm del final
             $this->SetFont('Arial', 'I', 11); //tipo fuente, negrita(B-I-U-BIU), tamañoTexto
             $this->Cell(0, 10, utf8_decode('*** Gracias por su compra ***'), 0, 0, 'C'); //pie de pagina(numero de pagina)
@@ -253,17 +302,17 @@ function imprimir()
 
             $this->SetY(-80);
             $this->SetX(20);
-            $this->SetFont('Arial', 'B', 10);
+            $this->SetFont('Arial', 'B', 9);
             $this->Cell(50, 10, utf8_decode('Cliente: ' . $mostrar), 0, 0, '', 0);
 
             $this->SetY(-70);
             $this->SetX(20);
-            $this->SetFont('Arial', 'B', 10);
+            $this->SetFont('Arial', 'B', 9);
             $this->Cell(20, 10, utf8_decode('RUC: ' . $ruc), 0, 0, '', 0);
 
             $this->SetY(-60);
             $this->SetX(20);
-            $this->SetFont('Arial', 'B', 10);
+            $this->SetFont('Arial', 'B', 9);
             $this->Cell(30, 10, utf8_decode('Telefono: ' . $telefono), 0, 0, '', 0);
             
             $this->SetY(-25); // Posición: a 1,5 cm del final
@@ -287,16 +336,27 @@ function imprimir()
 
     while ($ver = mysqli_fetch_row($result)) {
 
+        
+
         $i = $i + 1;
         /* TABLA */
-        $pdf->SetX(20);
+        $pdf->SetX(40);
+
+        if($ver[4] == "5"){
+            $mfinal = ($ver[2]*(0.05));
+        }else if($ver[4] == "10"){
+            $mfinal = ($ver[2]*(0.090909));
+        }
+
+
         $pdf->Cell(15, 10, utf8_decode($ver[0]), 1, 0, 'C', 0);
         $pdf->Cell(40, 10, utf8_decode($ver[1]), 1, 0, 'C', 0);
         $pdf->Cell(20, 10, utf8_decode('Gs. ' . number_format($ver[2], 0, ",", ".")), 1, 0, 'C', 0);
-        $pdf->Cell(20, 10, utf8_decode($ver[3]), 1, 0, 'C', 0);
         $pdf->Cell(15, 10, utf8_decode(round($ver[4])), 1, 0, 'C', 0);
-        $pdf->Cell(25, 10, utf8_decode('Gs. ' . number_format($ver[5], 0, ",", ".")), 1, 0, 'C', 0);
-        $pdf->Cell(25, 10, utf8_decode('Gs. ' . number_format($ver[6], 0, ",", ".")), 1, 1, 'C', 0);
+        $pdf->Cell(15, 10, utf8_decode('Gs. ' . number_format($mfinal, 0, ",", ".")), 1, 0, 'C', 0);
+        $pdf->Cell(20, 10, utf8_decode($ver[3]), 1, 1, 'C', 0);
+        
+        
     }
 
     $pdf->Output('Prueba.pdf', 'I'); //nombreDescarga, Visor(I->visualizar - D->descargar)
