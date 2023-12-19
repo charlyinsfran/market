@@ -96,12 +96,12 @@
 
                 <body>
                     
-                    <div class="container">
+                    <div class="container" style="padding-top: -5px;">
                         <div class="row">
                             <div class="col-sm-15">
                                 <form action="modelo_ventas.php" method="post" class="form-group" id="for_venta">
-                                <button  name="operacion" class="btn btn-sm" value="prueba">Prueba
-                                                    </button>
+                                <!--<button  name="operacion" class="btn btn-sm" value="prueba">Prueba
+                                                    </button> -->
                                     <table class="table table-bordered">
                                         <tr style="background-color: #cdf6fc; height: 5px; width: 10px;">
                                             <td rowspan="2" style="background-color: white; text-align: center;">

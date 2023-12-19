@@ -94,11 +94,50 @@ if(isset($_SESSION['usuario'])){
   </div> 
 </div>  
   
-</div>
-</div>
+<div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-12">
+
+
+          <div class="panel">
+            
+            <div class="panel panel-body">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  
+                  <div id="graficolineal"></div>
+                </div>
+                <div class="col-sm-6">
+                 
+                  <div id="graficobarras"></div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
    
 </body>
 </html>
+
+<script>
+  $(document).ready(function(){
+$('#graficolineal').load('graficos/ventas.php');
+$('#graficobarras').load('graficos/compras.php');
+});
+</script>
+
 
 <?php
 }else{
