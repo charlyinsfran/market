@@ -48,11 +48,6 @@ function crearCadenaBarras(json) {
 	datosX = crearCadenaBarras('<?php echo $datosX ?>');
 	datosY = crearCadenaBarras('<?php echo $datosY ?>');
 	
-
-
-
-
-
 var data = [
 
   {
@@ -72,7 +67,7 @@ var layout = {
   title:'Ventas',
 
   xaxis: {
-  	title: 'Fechas'
+  	
   },
 
   yaxis: {

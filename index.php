@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="imagenes/login_icono.png">
+    <link rel="shortcut icon" href="imagenes/login.png">
     <link rel="stylesheet" type="text/css" href="librerias/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
     <link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/themes/default.css">
@@ -24,7 +24,7 @@
             <div class="panel" style="width: 350px;">
                 <div class="panel panel-heading" style="text-align: center;">DMARKET - DCHR_SOFT &COPY;</div>
                 <div class="panel panel-body" align="center">
-                <p><img src="imagenes/devops_logo.jpg" height="220" width="280" style="text-align: center;"></p>
+                <p><img src="imagenes/logotipo.jpg" height="220" width="280" style="text-align: center;"></p>
 
                 <form id="frm_login" action="procesos/reglogin/login.php" method="POST">
                 <div class="col-sm-12">

@@ -72,7 +72,7 @@ var layout = {
   title:'Compras',
 
   xaxis: {
-  	title: 'Fechas'
+  	
   },
 
   yaxis: {

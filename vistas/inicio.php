@@ -40,8 +40,8 @@ if(isset($_SESSION['usuario'])){
     <?php require_once "menu.php";?>
 </head>
 <body>
-<div class="container bootstrap snippet">
-  <div class="row">
+<div class="container">
+  <div class="row" style="width: 1200px; margin-top:-5em;">
     <div class="col-lg-3 col-sm-6">
       <div class="circle-tile">
         <a href="#"><div class="circle-tile-heading dark-blue"><i class="glyphicon glyphicon-barcode gi-1" style="padding-top: 10px;"></i></div></a>
@@ -92,11 +92,9 @@ if(isset($_SESSION['usuario'])){
 
 
   </div> 
-</div>  
-  
-<div class="container">
 
-      <div class="row">
+
+      <div class="row" style="width: 1200px; height: 52%;">
 
         <div class="col-sm-12">
 
@@ -118,6 +116,14 @@ if(isset($_SESSION['usuario'])){
                 </div>
               </div>
 
+              <div class="row">
+                <div class="col-sm-1"></div>
+              <div class="col-sm-11">
+                  
+                  <div id="graficocircular"></div>
+                </div>
+              </div>
+
 
             </div>
           </div>
@@ -135,6 +141,7 @@ if(isset($_SESSION['usuario'])){
   $(document).ready(function(){
 $('#graficolineal').load('graficos/ventas.php');
 $('#graficobarras').load('graficos/compras.php');
+$('#graficocircular').load('graficos/productosvend.php');
 });
 </script>
 

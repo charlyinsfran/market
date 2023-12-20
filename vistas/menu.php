@@ -26,7 +26,7 @@
 
 
   <div id="nav">
-    <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="20">
+    <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="-20">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -132,9 +132,5 @@
 
 </html>
 
-
-<script>
-  $(document).body.style.zoom="90%";
-</script>
 
 
