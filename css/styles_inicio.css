@@ -1,6 +1,17 @@
+#container::-webkit-scrollbar{
+
+    display:  none;
+}
+#container{
+    
+}
+
+
+
+
 
 .circle-tile {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: center;
 }
 .circle-tile-heading {
@@ -14,16 +25,16 @@
     width: 80px;
 }
 .circle-tile-heading .fa {
-    line-height: 60px;
+    line-height: 40px;
 }
 .circle-tile-content {
-    padding-top: 10px;
+    padding-top: 50px;
 }
 .circle-tile-number {
-    font-size: 9px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 1;
-    padding: 2px 0 5px;
+    padding: 2px 0 10px;
 }
 .circle-tile-description {
     text-transform: uppercase;
@@ -32,7 +43,7 @@
     background-color: rgba(0, 0, 0, 0.1);
     color: rgba(255, 255, 255, 0.5);
     display: block;
-    padding: 0px;
+    padding: 10px;
     transition: all 0.3s ease-in-out 0s;
 }
 .circle-tile-footer:hover {
@@ -59,7 +70,7 @@
     background-color: #7F3D9B;
 }
 .tile-img {
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
 
 .dark-blue {
@@ -115,7 +126,7 @@
 }
 
 .gi-1{
-    font-size: 1em;
+    font-size: 3em;
 }
 .gi-2{
     font-size: 2em;

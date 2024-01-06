@@ -7,13 +7,13 @@ $c = new conectar();
 $conexion = $c->conexion();
 
 $sql = "SELECT id_producto,nombre,cantidad,precio,iva
-FROM productos where cantidad <= 1 ORDER BY cantidad asc";
+FROM productos ORDER BY cantidad asc";
 
 $result = mysqli_query($conexion, $sql);
 
 ?>
 
-<label style="text-align: center;">PRODUCTOS SIN STOCK</label>
+<label style="text-align: center;">ACTUALIZACION DE STOCK</label>
 <p></p>
 <P></P>
 
@@ -38,7 +38,7 @@ while ($ver = mysqli_fetch_row($result)) :
     
 ?>
     
-    <tr style="font-size: 13;">
+    <tr style="font-size: 13; text-align: center;">
    
             <td><?php echo utf8_encode($ver[0]); ?> </td>
             <td><?php echo utf8_encode($ver[1]); ?></td>
@@ -53,7 +53,7 @@ while ($ver = mysqli_fetch_row($result)) :
                 ?>
             <td>Gs. <?php echo number_format($preciofinal, 0, ",", "."); ?></td>
 
-            <td style="text-align: center;">
+            <td style="text-align: center; width: 120px;">
                 <span class="btn btn-info btn-sm" >
                     <span class="glyphicon glyphicon-pencil" 
                     <?php 

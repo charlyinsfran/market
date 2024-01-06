@@ -53,7 +53,7 @@ function crearCadenacircular(json) {
 
 var traceA = {
   type: "pie",
-  font: {color: "white",size: 10},
+  font: {color: "white",size: 9},
   values: [datosX[0],datosX[1],datosX[2],datosX[3],datosX[4]],
   labels: [datosY[0],datosY[1],datosY[2],datosY[3],datosY[4]]
 };
@@ -61,10 +61,10 @@ var traceA = {
 var data = [traceA];
 
 var layout = {
-  title: "Productos mas vendidos",
-  height: 800,
-  width: 900,
-  font: {color: "black",size: 15,family: 'sans serif'}
+  title: "PRODUCTOS MAS VENDIDOS",
+  height: 700,
+  width: 800,
+  font: {color: "black",size: 12,family: 'sans serif'}
 };
 
 Plotly.plot('graficacircular', data, layout);

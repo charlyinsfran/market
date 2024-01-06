@@ -87,7 +87,7 @@
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link rel="shortcut icon" href="../imagenes/punto-de-venta.png">
-                    <!--<link rel="stylesheet" href="../css/style_tablefact.css">-->
+                    <link rel="stylesheet" href="../css/estilosventas.css">
                     <title>VENTAS</title>
 
                     <?php require_once "menu.php"; ?>
@@ -105,10 +105,10 @@
                                     <table class="table table-bordered">
                                         <tr style="background-color: #cdf6fc; height: 5px; width: 10px;">
                                             <td rowspan="2" style="background-color: white; text-align: center;">
-                                                <label style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.0em; color:blueviolet">Ultimo Vuelto</label>
+                                                <label style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.4em; color:blueviolet">ULTIMO VUELTO</label>
 
                                                 <p></p>
-                                                <input type="text" readonly style="font-size: 2.2em; width: 200px; border: 0; text-align: center;" class="input-sm" value="<?php echo 'GS. '.number_format($vueltoimp, 0, ",", "."); ?>">
+                                                <input type="text" readonly style="font-size: 2.5em; width: 200px; border: 0; text-align: center;" class="input-sm" value="<?php echo 'GS. '.number_format($vueltoimp, 0, ",", "."); ?>">
                                             </td>
                                             <td style="text-align: center;"><?php echo "Factura Nro:  " . $autocompl_factura . "<strong>" . ($mostrarconsulta + 1) . "</strong>"; ?></td>
                                             
@@ -122,16 +122,17 @@
                                         </tr>
                                         <tr style="height: 10px;">
 
-                                            <td colspan="1" style="height: 15px;"><label style="text-align: center;">CLIENTE</label></td>
+                                            <td colspan="1" style="height: 15px; text-align: center;"><label style="text-align: center;">CLIENTE</label></td>
                                             <td colspan="1"><input type="text" class="form-control" name="cicliente" id="cicliente" placeholder="INGRESE RUC Ó C.I DEL CLIENTE" maxlength="12"></td>
 
                                             <td style="text-align: center;">
                                                 <?php if (!isset($_SESSION['clientes'])) { ?>
-                                                    <button style="background: linear-gradient(to right, #727777,#9fa9a9);" name="operacion" class="btn btn-sm" value="buscar">
+                                                    
+                                                    <button name="operacion" class="btn btn-sm" value="buscar" id="buscarclientebtn">
                                                         <img src="../imagenes/iconos/clienteadd.svg" alt="x" />
                                                     </button>
                                                 <?php } ?>
-                                                <span style="background: linear-gradient(to left, #71f8e8,#3464fb);" class="btn btn-sm">
+                                                <span class="btn btn-sm" id="nuevoclientebtn">
 
                                                     <span data-toggle="modal" data-target="#nuevoclientemodal">
                                                         <img src="../imagenes/iconos/newwindow.svg" alt="x" />
@@ -254,15 +255,15 @@
                                     <td><label style="font-size: 1.2em;">Total</label></td>
                                     <td><input type="text" id="totalventa" name="totalventa" value="<?php echo $total; ?>" hidden>
                                         <label style="width: 30px;"> -- </label>
-                                        <label style="font-size: 1.3em; background-color: yellow; border: 2px;"><?php echo 'Gs. ' . number_format($total, 0, ",", "."); ?></label>
+                                        <input type="text" style="font-size: 1.3em; background-color: #e2ece2; border-radius: 1px; width: 150px;" value="<?php echo 'Gs. ' . number_format($total, 0, ",", "."); ?>" readonly>
                                     </td>
-                                    <label style="width: 28%;"></label>
+                                    <label style="width: 10%;"></label>
 
 
                                     <td><label style="font-size: 1.2em;">Sub Total</label></td>
                                     <td><input type="text" id="subtotalventa" name="subtotalventa" value="<?php echo $imp_subtotal; ?>" hidden>
                                         <label style="width: 30px;"> -- </label>
-                                        <label style="font-size: 1.3em; background-color: yellow; border: 2px;"><?php echo 'Gs. ' . number_format($imp_subtotal, 0, ",", "."); ?></label>
+                                        <input type="text" style="font-size: 1.3em; background-color: #e2ece2; border-radius: 1px; width: 150px;" value="<?php echo 'Gs. ' . number_format($imp_subtotal, 0, ",", "."); ?>">
                                     </td>
                                     <label style="width: 20%;"></label>
 
@@ -270,11 +271,11 @@
                                     <td><label style="font-size: 1.2em;">IVA</label></td>
                                     <td><input type="text" id="totaliva" name="totaliva" value="<?php echo $imp_iva; ?>" hidden>
                                         <label style="width: 30px;"> -- </label>
-                                        <label style="font-size: 1.3em; background-color: yellow; border: 2px;"><?php echo 'Gs. ' . number_format($imp_iva, 0, ",", "."); ?></label>
+                                        <input type="text" style="font-size: 1.3em; background-color: #e2ece2; border-radius: 1px; width: 150px;" value="<?php echo 'Gs. ' . number_format($imp_iva, 0, ",", "."); ?>">
                                     </td>
                                     <p></p>
 
-                                    <span style="background: linear-gradient(to left, #2da001,#1a5604);" class="btn btn-sm">
+                                    <span style="background: linear-gradient(to left, #1390f2,#0575cc);" class="btn btn-sm">
 
                                         <span data-toggle="modal" data-target="#facturarmodal">
                                             <img src="../imagenes/iconos/vender.svg" alt="x" />

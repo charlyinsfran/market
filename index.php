@@ -13,7 +13,8 @@
     <script src="librerias/alertifyjs/alertify.js"></script>
     <title>LOGIN</title>
 </head>
-<body style="background-image: url(imagenes/background.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+<body style="background-image: url(imagenes/background.jpg); background-position: center; background-repeat: no-repeat; 
+background-size: cover;width: 100%; height: 700px;">
 
 <br><br><br>
 

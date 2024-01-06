@@ -1,0 +1,17 @@
+#buscarclientebtn{
+    background: #727777;
+}
+
+
+#buscarclientebtn:hover {
+    background-color:#e9edf0;
+
+}
+ 
+#nuevoclientebtn:hover{
+    background-color:#e9edf0;
+  }
+
+  #nuevoclientebtn{
+    background: #0298de;
+  }

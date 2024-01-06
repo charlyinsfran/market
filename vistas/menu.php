@@ -87,6 +87,7 @@
                   <a href="ventas.php">Ventas</a>
                   <a href="compras.php">Compras</a>
                   <a href="view_compras.php">Listado de Compras</a>
+                  <a href="anularventa.php">Anular Venta</a>
                 </li>
 
             </li>
@@ -98,8 +99,8 @@
               <span class="glyphicon glyphicon-file"></span> Reportes <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
+              <li><a href="report.php">All Ventas</a></li>
+              <li><a href="reportesdate.php">Ventas por Fecha</a></li>
               <li><a href=""></a></li>
               <li><a href=""></a></li>
             </ul>
