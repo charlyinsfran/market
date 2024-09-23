@@ -4,11 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>INICIO</title>
   <?php
-
-
 
   require_once "dependencias.php";
   require_once "../clases/Conexion.php";
@@ -58,7 +55,9 @@
                 <li><a href="categorias.php">Categorias</a></li>
                 <li><a href="productos.php">Productos</a></li>
                 <li><a href="proveedores.php">Proveedores</a></li>
+                <?php if($tipo == "admin"){?>
                 <li><a href="stock.php">Stock</a></li>
+                <?php }?>
 
 
               </ul>
@@ -85,14 +84,16 @@
 
                 <li>
                   <a href="ventas.php">Ventas</a>
+                  <?php if($tipo == "admin"){?>
                   <a href="compras.php">Compras</a>
                   <a href="view_compras.php">Listado de Compras</a>
+                  <?php } ?>
                   <a href="anularventa.php">Anular Venta</a>
                 </li>
 
             </li>
           </ul>
-
+          <?php if($tipo == "admin"){?>
           <li class="dropdown">
 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -100,11 +101,11 @@
 
             <ul class="dropdown-menu">
               <li><a href="report.php">All Ventas</a></li>
-              <li><a href="reportesdate.php">Ventas por Fecha</a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
+              <li><a href="reportesdate.php">Reportes por Fecha</a></li>
+              
             </ul>
           </li>
+          <?php }?>
 
           <li class="dropdown">
             <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

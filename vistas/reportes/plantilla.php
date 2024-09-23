@@ -11,7 +11,7 @@ class PDF extends FPDF
         date_default_timezone_set('America/Asuncion');
         $fecha = date('d/m/Y H:i:s');
         // Logo
-       $this->Image("../imagenes/reportes/estadisticas.png", 10, 5, 13);
+       $this->Image("../imagenes/reportes/ventas.png", 10, 5, 13);
 
         // Arial bold 15
         $this->SetFont("Arial", "B", 12);

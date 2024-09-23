@@ -13,7 +13,7 @@ $result = mysqli_query($conexion, $sql);
 
 ?>
 
-<label style="font-size: 2em; text-align:center">Categorias de Productos</label>
+<label style="font-size: 2em; text-align:center">Users List</label>
 <p></p>
 
 

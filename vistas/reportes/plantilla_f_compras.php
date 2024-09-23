@@ -1,6 +1,7 @@
 <?php
 
 require '../fpdf/fpdf.php';
+$usuario = $_SESSION['usuario'];
 
 class PDF extends FPDF
 {
@@ -11,14 +12,14 @@ class PDF extends FPDF
         date_default_timezone_set('America/Asuncion');
         $fecha = date('d-m-Y H:i:s');
         // Logo
-       $this->Image("../../imagenes/reportes/ventas.png", 10, 5, 13);
+       $this->Image("../../imagenes/reportes/orden.png", 10, 5, 13);
 
         // Arial bold 15
         $this->SetFont("Arial", "U", 12);
         $this->SetTextColor(1,76,91);
 
         // Título
-        $tituloReporte = "CONTROL DE VENTAS";
+        $tituloReporte = "CONTROL DE INGRESO DE MERCADERIAS";
         $this->Cell(25);
         $this->Cell(140, 5,  mb_convert_encoding($tituloReporte, 'ISO-8859-1', 'UTF-8'), 0, 0, "C");
 

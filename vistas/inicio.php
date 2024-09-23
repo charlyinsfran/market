@@ -8,6 +8,7 @@ if (isset($_SESSION['usuario'])) {
   $c = new conectar();
   $conexion = $c->conexion();
   $sesiontipo = $_SESSION['tipousuario'];
+  
   //query para mostrar la cantidad de productos del sistema
   $sql = "SELECT count(id_producto) from productos";
   $result = mysqli_query($conexion, $sql);
@@ -17,10 +18,10 @@ if (isset($_SESSION['usuario'])) {
   $ret_clientes = mysqli_query($conexion, $clientes);
 
 
-  $compras = "SELECT SUM(total) from compras;";
+  $compras = "SELECT SUM(total) from compras";
   $ret_compras = mysqli_query($conexion, $compras);
 
-  $ventas = "SELECT SUM(total) from ventas;";
+  $ventas = "SELECT SUM(total) from ventas";
   $ret_ventas = mysqli_query($conexion, $ventas);
 
 ?>
@@ -76,7 +77,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
           </div>
         </div>
-
+        <?php if($sesiontipo == "admin"){?>
         <div class="col-lg-3 col-sm-6">
           <div class="circle-tile ">
             <a href="#">
@@ -90,6 +91,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
           </div>
         </div>
+        <?php }?>
 
         <div class="col-lg-3 col-sm-6">
           <div class="circle-tile ">

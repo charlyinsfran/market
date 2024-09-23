@@ -1,3 +1,5 @@
+
+
 <?php
 
 session_start();
@@ -13,8 +15,7 @@ session_start();
 			}
 			else
 			{
-				$DESDE ="2023-01-01";
-				$HASTA ="2024-12-31";
+				header("location:../reportesdate.php?error=3");
 
 			}
 		
@@ -25,7 +26,9 @@ session_start();
 		$query = "SELECT  v.fecha,CONCAT(c.nombre, ' ', c.apellido),u.usuario,v.total,v.subtotal,v.condicion
         from ventas v 
         JOIN clientes c on v.idcliente = c.idclientes 
-        JOIN usuarios u WHERE v.fecha >= '$DESDE' and v.fecha <= '$HASTA'";
+        JOIN usuarios u 
+		JOIN detalle_ventas dv on dv.venta_nro = v.idventas 
+		 WHERE v.fecha >= '$DESDE' and v.fecha <= '$HASTA' group by v.total";
 		$result = mysqli_query($conexion,$query);
 
 		$pdf = new PDF();
@@ -44,8 +47,11 @@ session_start();
 
 
 		$pdf->SetFont('Arial','',8);
+		$ventas = 0;
 		while ($ver = mysqli_fetch_row($result)) {
-
+			
+			
+			
             $originalDate = $ver[0];
             $newDate = date("d-m-Y", strtotime($originalDate));
             
@@ -54,10 +60,16 @@ session_start();
                     $pdf->Cell(20, 5, strtoupper($ver[2]), 1, 0, "C");
                     $pdf->Cell(30, 5, 'Gs. ' . number_format($ver[3], 0, ",", "."), 1, 0, "C");
                     $pdf->Cell(30, 5, 'Gs. ' . number_format($ver[4], 0, ",", "."), 1, 0, "C");
+
                     $pdf->Cell(30, 5, strtoupper($ver[5]), 1, 1, "C");
-            
+					$ventas += $ver[4];
+					
                 }
-		$pdf->Output();
+				
+
+		$pdf->Ln(10);
+		$pdf->Cell(20,5,'Total Ventas Filtradas: '.'Gs. ' . number_format($ventas, 0, ",", "."),0,0,'');
+		$pdf->Output('I', $tituloReporte . '.pdf');
 
 	}
 	else{

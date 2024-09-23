@@ -10,7 +10,7 @@ if(isset($_SESSION['usuario'])){
 	<head>
 		<meta charset="UTF-8">
 		<title>Reportes</title>
-		<link rel="shorcut icon" href="../img/pdf.png" type="image/png">
+		<link rel="shorcut icon" href="../imagenes/dinero.png" type="image/png">
 		<?php require_once "menu.php";?> 
 		
 
@@ -31,6 +31,10 @@ if(isset($_SESSION['usuario'])){
 		
 							<span class="btn btn-primary glyphicon" name="ventas" id="ventas" style="width: 150px; height: 60px;">
                             <label style="font-family: sans-serif; font-weight:bold;font-size:20px;"><p></p>VENTAS</label>
+                        </span>
+
+						<span class="btn btn-success glyphicon" name="compras" id="compras" style="width: 150px; height: 60px;">
+                            <label style="font-family: sans-serif; font-weight:bold;font-size:20px;"><p></p>COMPRAS</label>
                         </span>
 			
 							</div>
@@ -59,6 +63,11 @@ if(isset($_SESSION['usuario'])){
 				$('#filtros').load("reportes/busquedas/view_ventas.php");
 
 			});
+
+			$('#compras').click(function(){
+				$('#filtros').load("reportes/busquedas/view_compras.php");
+
+			});
 			
 
 		});
@@ -80,6 +89,13 @@ if(isset($_SESSION['usuario'])){
 		</script>';
 
 		break; 
+
+		case 3:
+			echo '<script language="Javascript">
+			alertify.alert("Debe seleccionar un rango de filtrado");
+			</script>';
+	
+			break; 
 	}
 }
 else{
